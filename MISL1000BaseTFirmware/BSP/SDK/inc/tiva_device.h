@@ -1,0 +1,147 @@
+#pragma once
+
+#if defined(TM4C123GH6ZXR)
+	#include "tm4c123gh6zxr.h"
+#elif defined(TM4C123GH6ZRB)
+	#include "tm4c123gh6zrb.h"
+#elif defined(TM4C123GH6PZ)
+	#include "tm4c123gh6pz.h"
+#elif defined(TM4C123GH6PM)
+	#include "tm4c123gh6pm.h"
+#elif defined(TM4C123GH6PGE)
+	#include "tm4c123gh6pge.h"
+#elif defined(TM4C123GE6PZ)
+	#include "tm4c123ge6pz.h"
+#elif defined(TM4C123GE6PM)
+	#include "tm4c123ge6pm.h"
+#elif defined(TM4C123FH6PM)
+	#include "tm4c123fh6pm.h"
+#elif defined(TM4C123FE6PM)
+	#include "tm4c123fe6pm.h"
+#elif defined(TM4C123BH6ZRB)
+	#include "tm4c123bh6zrb.h"
+#elif defined(TM4C123BH6PZ)
+	#include "tm4c123bh6pz.h"
+#elif defined(TM4C123BH6PM)
+	#include "tm4c123bh6pm.h"
+#elif defined(TM4C123BH6PGE)
+	#include "tm4c123bh6pge.h"
+#elif defined(TM4C123BE6PZ)
+	#include "tm4c123be6pz.h"
+#elif defined(TM4C123BE6PM)
+	#include "tm4c123be6pm.h"
+#elif defined(TM4C123AH6PM)
+	#include "tm4c123ah6pm.h"
+#elif defined(TM4C123AE6PM)
+	#include "tm4c123ae6pm.h"
+#elif defined(TM4C1237H6PZ)
+	#include "tm4c1237h6pz.h"
+#elif defined(TM4C1237H6PM)
+	#include "tm4c1237h6pm.h"
+#elif defined(TM4C1237H6PGE)
+	#include "tm4c1237h6pge.h"
+#elif defined(TM4C1237E6PZ)
+	#include "tm4c1237e6pz.h"
+#elif defined(TM4C1237E6PM)
+	#include "tm4c1237e6pm.h"
+#elif defined(TM4C1237D5PZ)
+	#include "tm4c1237d5pz.h"
+#elif defined(TM4C1237D5PM)
+	#include "tm4c1237d5pm.h"
+#elif defined(TM4C1236H6PM)
+	#include "tm4c1236h6pm.h"
+#elif defined(TM4C1236E6PM)
+	#include "tm4c1236e6pm.h"
+#elif defined(TM4C1236D5PM)
+	#include "tm4c1236d5pm.h"
+#elif defined(TM4C1233H6PZ)
+	#include "tm4c1233h6pz.h"
+#elif defined(TM4C1233H6PM)
+	#include "tm4c1233h6pm.h"
+#elif defined(TM4C1233H6PGE)
+	#include "tm4c1233h6pge.h"
+#elif defined(TM4C1233E6PZ)
+	#include "tm4c1233e6pz.h"
+#elif defined(TM4C1233E6PM)
+	#include "tm4c1233e6pm.h"
+#elif defined(TM4C1233D5PZ)
+	#include "tm4c1233d5pz.h"
+#elif defined(TM4C1233D5PM)
+	#include "tm4c1233d5pm.h"
+#elif defined(TM4C1233C3PM)
+	#include "tm4c1233c3pm.h"
+#elif defined(TM4C1232H6PM)
+	#include "tm4c1232h6pm.h"
+#elif defined(TM4C1232E6PM)
+	#include "tm4c1232e6pm.h"
+#elif defined(TM4C1232D5PM)
+	#include "tm4c1232d5pm.h"
+#elif defined(TM4C1232C3PM)
+	#include "tm4c1232c3pm.h"
+#elif defined(TM4C1231H6PZ)
+	#include "tm4c1231h6pz.h"
+#elif defined(TM4C1231H6PM)
+	#include "tm4c1231h6pm.h"
+#elif defined(TM4C1231H6PGE)
+	#include "tm4c1231h6pge.h"
+#elif defined(TM4C1231E6PZ)
+	#include "tm4c1231e6pz.h"
+#elif defined(TM4C1231E6PM)
+	#include "tm4c1231e6pm.h"
+#elif defined(TM4C1231D5PZ)
+	#include "tm4c1231d5pz.h"
+#elif defined(TM4C1231D5PM)
+	#include "tm4c1231d5pm.h"
+#elif defined(TM4C1231C3PM)
+	#include "tm4c1231c3pm.h"
+#elif defined(TM4C1230H6PM)
+	#include "tm4c1230h6pm.h"
+#elif defined(TM4C1230E6PM)
+	#include "tm4c1230e6pm.h"
+#elif defined(TM4C1230D5PM)
+	#include "tm4c1230d5pm.h"
+#elif defined(TM4C1230C3PM)
+	#include "tm4c1230c3pm.h"
+#elif defined(TM4C129XNCZAD)
+	#include "tm4c129xnczad.h"
+#elif defined(TM4C129XKCZAD)
+	#include "tm4c129xkczad.h"
+#elif defined(TM4C129LNCZAD)
+	#include "tm4c129lnczad.h"
+#elif defined(TM4C129ENCZAD)
+	#include "tm4c129enczad.h"
+#elif defined(TM4C129ENCPDT)
+	#include "tm4c129encpdt.h"
+#elif defined(TM4C129EKCPDT)
+	#include "tm4c129ekcpdt.h"
+#elif defined(TM4C129DNCZAD)
+	#include "tm4c129dnczad.h"
+#elif defined(TM4C129DNCPDT)
+	#include "tm4c129dncpdt.h"
+#elif defined(TM4C129CNCZAD)
+	#include "tm4c129cnczad.h"
+#elif defined(TM4C129CNCPDT)
+	#include "tm4c129cncpdt.h"
+#elif defined(TM4C1299NCZAD)
+	#include "tm4c1299nczad.h"
+#elif defined(TM4C1299KCZAD)
+	#include "tm4c1299kczad.h"
+#elif defined(TM4C1297NCZAD)
+	#include "tm4c1297nczad.h"
+#elif defined(TM4C1294NCZAD)
+	#include "tm4c1294nczad.h"
+#elif defined(TM4C1294NCPDT)
+	#include "tm4c1294ncpdt.h"
+#elif defined(TM4C1294KCPDT)
+	#include "tm4c1294kcpdt.h"
+#elif defined(TM4C1292NCZAD)
+	#include "tm4c1292nczad.h"
+#elif defined(TM4C1292NCPDT)
+	#include "tm4c1292ncpdt.h"
+#elif defined(TM4C1290NCZAD)
+	#include "tm4c1290nczad.h"
+#elif defined(TM4C1290NCPDT)
+	#include "tm4c1290ncpdt.h"
+#else
+#error Device type not specified
+#endif

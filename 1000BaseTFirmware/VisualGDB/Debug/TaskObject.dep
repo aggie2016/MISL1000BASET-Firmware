@@ -1,0 +1,4 @@
+VisualGDB/Debug/TaskObject.o: HardwareControl/TaskObject.cpp \
+ HardwareControl/TaskObject.h
+
+HardwareControl/TaskObject.h:

@@ -1,0 +1,16 @@
+VisualGDB/Debug/HelperFunctions.o: SystemObjects/HelperFunctions.cpp \
+ SystemObjects/HelperFunctions.h \
+ c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\type_traits \
+ c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\arm-eabi\thumb\cortex_m4\bits\c++config.h \
+ c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\arm-eabi\thumb\cortex_m4\bits\os_defines.h \
+ c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\arm-eabi\thumb\cortex_m4\bits\cpu_defines.h
+
+SystemObjects/HelperFunctions.h:
+
+c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\type_traits:
+
+c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\arm-eabi\thumb\cortex_m4\bits\c++config.h:
+
+c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\arm-eabi\thumb\cortex_m4\bits\os_defines.h:
+
+c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\arm-eabi\thumb\cortex_m4\bits\cpu_defines.h:

@@ -1,0 +1,21 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26228.4
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "1000BaseTFirmware", "..\..\..\..\..\gdbsources\1000BaseTFirmware\1000BaseTFirmware\1000BaseTFirmware.vcxproj", "{4974C068-32FF-4BC7-9356-B5231D3C6D3B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|VisualGDB = Debug|VisualGDB
+		Release|VisualGDB = Release|VisualGDB
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4974C068-32FF-4BC7-9356-B5231D3C6D3B}.Debug|VisualGDB.ActiveCfg = Debug|VisualGDB
+		{4974C068-32FF-4BC7-9356-B5231D3C6D3B}.Debug|VisualGDB.Build.0 = Debug|VisualGDB
+		{4974C068-32FF-4BC7-9356-B5231D3C6D3B}.Release|VisualGDB.ActiveCfg = Release|VisualGDB
+		{4974C068-32FF-4BC7-9356-B5231D3C6D3B}.Release|VisualGDB.Build.0 = Release|VisualGDB
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

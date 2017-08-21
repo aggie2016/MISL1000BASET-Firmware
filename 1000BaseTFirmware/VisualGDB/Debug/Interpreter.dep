@@ -1,0 +1,4 @@
+VisualGDB/Debug/Interpreter.o: CommandLine/Interpreter/Interpreter.cpp \
+ CommandLine/Interpreter/Interpreter.h
+
+CommandLine/Interpreter/Interpreter.h:

@@ -1,39 +1,5 @@
-﻿  SetPort.cpp
-  CommandLine/Commands/SetPort.cpp: In member function 'virtual bool SetPort::functionToRun()':
-CommandLine\Commands\SetPort.cpp(35,17): warning :  ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
-    MISL::ucout << "Running the read register command" << MISL::endl;
-                   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-CommandLine\Commands\SetPort.cpp(36,17): warning :  ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
-    MISL::ucout << "Received the following arguments: " << MISL::endl;
-                   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-CommandLine\Commands\SetPort.cpp(37,17): warning :  ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
-    MISL::ucout << "FLAGS:" << MISL::endl;
-                   ^~~~~~~~
-CommandLine\Commands\SetPort.cpp(41,18): warning :  ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
-     MISL::ucout << "\t[" << count++ << "] " << flag << MISL::endl;
-                    ^~~~~
-CommandLine\Commands\SetPort.cpp(41,38): warning :  ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
-     MISL::ucout << "\t[" << count++ << "] " << flag << MISL::endl;
-                                        ^~~~
-CommandLine\Commands\SetPort.cpp(45,31): warning :  ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
-    MISL::ucout << MISL::endl << "PARAMETERS:" << MISL::endl;
-                                 ^~~~~~~~~~~~~
-CommandLine\Commands\SetPort.cpp(49,18): warning :  ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
-     MISL::ucout << "\t[" << count++ << "] " << parameter << MISL::endl;
-                    ^~~~~
-CommandLine\Commands\SetPort.cpp(49,38): warning :  ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
-     MISL::ucout << "\t[" << count++ << "] " << parameter << MISL::endl;
-                                        ^~~~
-  CommandLine\Commands\SetPort.h(5):
-  CommandLine\Commands\SetPort.cpp(1):
-  ./HardwareControl/UIOStream.h: At global scope:
-.\HardwareControl\UIOStream.h(31,14): warning :  'void MISL::ConfigureUART()' declared 'static' but never defined [-Wunused-function]
-    static void ConfigureUART(void);
-                ^~~~~~~~~~~~~
-.\HardwareControl\UIOStream.h(38,14): warning :  'void MISL::SetUARTEcho(bool)' defined but not used [-Wunused-function]
-    static void SetUARTEcho(bool state)
-                ^~~~~~~~~~~
+﻿  uartstdio.c
   Linking ../VisualGDB/Debug/MISL1000BaseTFirmware...
   ------------------- Memory utilization report -------------------
-  Used FLASH: 57KB out of 1024KB (5%) [-4]
-  Used RAM: 53KB out of 256KB (20%)
+  Used FLASH: 210KB out of 1024KB (20%) [-24]
+  Used RAM: 55KB out of 256KB (21%)

@@ -29,7 +29,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
     <GNUConfigurationType>Debug</GNUConfigurationType>
-    <Toolchain>C:\SysGCC\arm-eabi</Toolchain>
+    <Toolchain>c:\SysGCC\arm-eabi</Toolchain>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|VisualGDB'">
     <Toolchain>C:\SysGCC\arm-eabi</Toolchain>
@@ -39,7 +39,7 @@
       <AdditionalIncludeDirectories>.;FreeRTOS/include;FreeRTOS/portable/CCS/ARM_CM4F;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>-mthumb -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=softfp -g -Wall %(AdditionalOptions)</AdditionalOptions>
       <CPPLanguageStandard>CPP11</CPPLanguageStandard>
-      <PreprocessorDefinitions>DEBUG=1;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>DEBUG=1;UART_BUFFERED;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <ToolchainSettingsContainer>
       <InstructionSet>THUMB</InstructionSet>

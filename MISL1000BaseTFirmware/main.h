@@ -11,4 +11,9 @@
 // System clock rate, 120 MHz
 #define SYSTEM_CLOCK    120000000U
 
+// Software Version Information
+#define MAJOR_VERSION	0
+#define MINOR_VERSION	1
+#define REVISION		43
+
 #endif /* MAIN_H_ */

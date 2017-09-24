@@ -108,7 +108,33 @@ VisualGDB/Debug/ICommand.o: CommandLine/Commands/ICommand.cpp \
  c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\tuple \
  c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\array \
  c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\stdexcept \
- c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\uses_allocator.h
+ c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\uses_allocator.h \
+ SystemObjects/HelperFunctions.h \
+ c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\iterator \
+ c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\ostream \
+ c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\ios \
+ c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\ios_base.h \
+ c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\locale_classes.h \
+ c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\locale_classes.tcc \
+ c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\system_error \
+ c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\arm-eabi\thumb\cortex_m4\bits\error_constants.h \
+ c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\streambuf \
+ c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\streambuf.tcc \
+ c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\basic_ios.h \
+ c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\locale_facets.h \
+ c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\cwctype \
+ c:\sysgcc\arm-eabi\arm-eabi\sys-include\wctype.h \
+ c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\arm-eabi\thumb\cortex_m4\bits\ctype_base.h \
+ c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\streambuf_iterator.h \
+ c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\arm-eabi\thumb\cortex_m4\bits\ctype_inline.h \
+ c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\locale_facets.tcc \
+ c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\basic_ios.tcc \
+ c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\ostream.tcc \
+ c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\istream \
+ c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\istream.tcc \
+ c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\stream_iterator.h \
+ c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\sstream \
+ c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\sstream.tcc
 
 CommandLine/Commands/ICommand.h:
 
@@ -329,3 +355,55 @@ c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\array:
 c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\stdexcept:
 
 c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\uses_allocator.h:
+
+SystemObjects/HelperFunctions.h:
+
+c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\iterator:
+
+c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\ostream:
+
+c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\ios:
+
+c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\ios_base.h:
+
+c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\locale_classes.h:
+
+c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\locale_classes.tcc:
+
+c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\system_error:
+
+c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\arm-eabi\thumb\cortex_m4\bits\error_constants.h:
+
+c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\streambuf:
+
+c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\streambuf.tcc:
+
+c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\basic_ios.h:
+
+c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\locale_facets.h:
+
+c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\cwctype:
+
+c:\sysgcc\arm-eabi\arm-eabi\sys-include\wctype.h:
+
+c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\arm-eabi\thumb\cortex_m4\bits\ctype_base.h:
+
+c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\streambuf_iterator.h:
+
+c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\arm-eabi\thumb\cortex_m4\bits\ctype_inline.h:
+
+c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\locale_facets.tcc:
+
+c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\basic_ios.tcc:
+
+c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\ostream.tcc:
+
+c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\istream:
+
+c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\istream.tcc:
+
+c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\stream_iterator.h:
+
+c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\sstream:
+
+c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\sstream.tcc:

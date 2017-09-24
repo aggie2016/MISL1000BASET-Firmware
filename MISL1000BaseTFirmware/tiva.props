@@ -11,7 +11,7 @@
 		<BSP_ROOT Condition="'$(BSP_ROOT)' == ''">BSP</BSP_ROOT>
 		<EFP_BASE Condition="'$(EFP_BASE)' == ''">../../../Users/Christopher Miller/AppData/Local/VisualGDB/EmbeddedEFPs</EFP_BASE>
 		<TESTFW_BASE Condition="'$(TESTFW_BASE)' == ''">../../../Users/Christopher Miller/AppData/Local/VisualGDB/TestFrameworks</TESTFW_BASE>
-		<TOOLCHAIN_ROOT Condition="'$(TOOLCHAIN_ROOT)' == ''">C:/SysGCC/arm-eabi</TOOLCHAIN_ROOT>
+		<TOOLCHAIN_ROOT Condition="'$(TOOLCHAIN_ROOT)' == ''">c:/SysGCC/arm-eabi</TOOLCHAIN_ROOT>
 	</PropertyGroup>
 	<ItemDefinitionGroup>
 		<ClCompile>

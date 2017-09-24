@@ -109,6 +109,44 @@ VisualGDB/Debug/BlinkLEDTask.o: FreeRTOS/Tasks/BlinkLEDTask.cpp \
  HardwareControl/../SystemObjects/SystemVariables.h \
  HardwareControl/../SystemObjects/ExceptionHandler.h \
  HardwareControl/../SystemObjects/HelperFunctions.h \
+ c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\algorithm \
+ c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\stl_algo.h \
+ c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\algorithmfwd.h \
+ c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\stl_heap.h \
+ c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\stl_tempbuf.h \
+ c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\stl_construct.h \
+ c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\uniform_int_dist.h \
+ c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\limits \
+ c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\iterator \
+ c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\ostream \
+ c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\ios \
+ c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\ios_base.h \
+ c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\locale_classes.h \
+ c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\locale_classes.tcc \
+ c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\system_error \
+ c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\arm-eabi\thumb\cortex_m4\bits\error_constants.h \
+ c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\streambuf \
+ c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\streambuf.tcc \
+ c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\basic_ios.h \
+ c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\locale_facets.h \
+ c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\cwctype \
+ c:\sysgcc\arm-eabi\arm-eabi\sys-include\wctype.h \
+ c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\arm-eabi\thumb\cortex_m4\bits\ctype_base.h \
+ c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\streambuf_iterator.h \
+ c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\arm-eabi\thumb\cortex_m4\bits\ctype_inline.h \
+ c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\locale_facets.tcc \
+ c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\basic_ios.tcc \
+ c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\ostream.tcc \
+ c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\istream \
+ c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\istream.tcc \
+ c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\stream_iterator.h \
+ c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\sstream \
+ c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\sstream.tcc \
+ c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\vector \
+ c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\stl_uninitialized.h \
+ c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\stl_vector.h \
+ c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\stl_bvector.h \
+ c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\vector.tcc \
  HardwareControl/ITask.h \
  c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\functional \
  c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\typeinfo FreeRTOSConfig.h \
@@ -345,6 +383,82 @@ HardwareControl/../SystemObjects/SystemVariables.h:
 HardwareControl/../SystemObjects/ExceptionHandler.h:
 
 HardwareControl/../SystemObjects/HelperFunctions.h:
+
+c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\algorithm:
+
+c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\stl_algo.h:
+
+c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\algorithmfwd.h:
+
+c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\stl_heap.h:
+
+c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\stl_tempbuf.h:
+
+c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\stl_construct.h:
+
+c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\uniform_int_dist.h:
+
+c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\limits:
+
+c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\iterator:
+
+c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\ostream:
+
+c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\ios:
+
+c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\ios_base.h:
+
+c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\locale_classes.h:
+
+c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\locale_classes.tcc:
+
+c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\system_error:
+
+c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\arm-eabi\thumb\cortex_m4\bits\error_constants.h:
+
+c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\streambuf:
+
+c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\streambuf.tcc:
+
+c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\basic_ios.h:
+
+c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\locale_facets.h:
+
+c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\cwctype:
+
+c:\sysgcc\arm-eabi\arm-eabi\sys-include\wctype.h:
+
+c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\arm-eabi\thumb\cortex_m4\bits\ctype_base.h:
+
+c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\streambuf_iterator.h:
+
+c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\arm-eabi\thumb\cortex_m4\bits\ctype_inline.h:
+
+c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\locale_facets.tcc:
+
+c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\basic_ios.tcc:
+
+c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\ostream.tcc:
+
+c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\istream:
+
+c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\istream.tcc:
+
+c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\stream_iterator.h:
+
+c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\sstream:
+
+c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\sstream.tcc:
+
+c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\vector:
+
+c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\stl_uninitialized.h:
+
+c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\stl_vector.h:
+
+c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\stl_bvector.h:
+
+c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\vector.tcc:
 
 HardwareControl/ITask.h:
 

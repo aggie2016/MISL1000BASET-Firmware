@@ -1,4 +1,5 @@
 #include "ICommand.h"
+#include "SystemObjects/HelperFunctions.h"
 
 ICommand::~ICommand()
 {
@@ -83,10 +84,20 @@ bool ICommand::parseCommandParameters(std::string cli_input)
 	m_parsedParameters.clear();
 	
 	
+	//Trim off the name of the command
+	int commandNameIndex = cli_input.find(name());
+	
+	if (commandNameIndex != std::string::npos)
+	{
+		cli_input.erase(commandNameIndex, name().length());
+	}
+	
+	
 	//Check for all flags (if any)
 	for (KeyValuePair flag : m_flags)
 	{
 		int startIndex = 0;
+		//Grab the flag name from our std::tuple 
 		std::string flagName = std::get<0>(flag);
 		startIndex = cli_input.find(flagName, 0);
 		
@@ -104,40 +115,52 @@ bool ICommand::parseCommandParameters(std::string cli_input)
 	//Get all characters up to the first flag if possible
 	if (flagRanges.size() > 0)
 	{
-		std::string parameter = (cli_input.substr(cursor, std::get<0>(flagRanges[0]) - cursor));
+		std::string parameterString = (cli_input.substr(0, std::get<0>(flagRanges[0])));
 		//Remove spaces (if any) to get just the parameter
-		parameter.erase(std::remove_if(parameter.begin(), parameter.end(), isspace), parameter.end());
-		if (parameter.size() > 0)
+		//parameter.erase(std::remove_if(parameter.begin(), parameter.end(), isspace), parameter.end());
+		
+		if (parameterString.size() > 0)
 		{
-			m_parsedParameters.push_back(parameter);
+			for (std::string parameter : HelperFunctions::splitString(parameterString))
+			{
+				m_parsedParameters.push_back(parameter);					
+			}
 		}
 		cursor = std::get<1>(flagRanges[0]);
-	}
 		
-	//Seach for parameters inside the range of the flags 
-	for (int i = 0; i < flagRanges.size(); i++)
-	{
-		if (flagRanges.size() > (i + 1))
+		//Seach for parameters inside the range of the flags 
+		for (int i = 0; i < flagRanges.size(); i++)
 		{
-			//Flag found somewhere in the middle of the command string
-			std::string parameter = (cli_input.substr(std::get<1>(flagRanges[i]), std::get<0>(flagRanges[i + 1]) - std::get<1>(flagRanges[i])));
-			//Remove spaces (if any) to get just the parameter
-			parameter.erase(std::remove_if(parameter.begin(), parameter.end(), isspace), parameter.end());
-			if (parameter.size() > 0)
+			if (flagRanges.size() > (i + 1))
 			{
-				m_parsedParameters.push_back(parameter);
+				//Flag found somewhere in the middle of the command string
+				std::string parameter = (cli_input.substr(std::get<1>(flagRanges[i]), std::get<0>(flagRanges[i + 1]) - std::get<1>(flagRanges[i])));
+				//Remove spaces (if any) to get just the parameter
+				parameter.erase(std::remove_if(parameter.begin(), parameter.end(), isspace), parameter.end());
+				if (parameter.size() > 0)
+				{
+					m_parsedParameters.push_back(parameter);
+				}
+			}
+			else
+			{
+				//Flag found at the end of the cli string
+				std::string parameter = (cli_input.substr(std::get<1>(flagRanges[i]), cli_input.size() - std::get<1>(flagRanges[i])));
+				//Remove spaces (if any) to get just the parameter
+				parameter.erase(std::remove_if(parameter.begin(), parameter.end(), isspace), parameter.end());
+				if (parameter.size() > 0)
+				{
+					m_parsedParameters.push_back(parameter);
+				}
 			}
 		}
-		else
+	}
+	else
+	{
+		//No flags found. Try spliting this string by spaces to get parameters
+		for (std::string parameter : HelperFunctions::splitString(cli_input))
 		{
-			//Flag found at the end of the cli string
-			std::string parameter = (cli_input.substr(std::get<1>(flagRanges[i]), cli_input.size() - std::get<1>(flagRanges[i])));
-			//Remove spaces (if any) to get just the parameter
-			parameter.erase(std::remove_if(parameter.begin(), parameter.end(), isspace), parameter.end());
-			if (parameter.size() > 0)
-			{
-				m_parsedParameters.push_back(parameter);
-			}
+			m_parsedParameters.push_back(parameter);					
 		}
 	}
 	

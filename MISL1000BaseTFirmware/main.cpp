@@ -77,12 +77,27 @@ int main(void)
 	
 	//Turn character echoing when characters are received from the command-line
 	MISL::SetUARTEcho(true);
+	
+	//Clear the console window
+	MISL::ClearConsole();
+	
+	MISL::ucout << "================================================" << MISL::endl
+				<< "=     MISL Gigabit Ethernet Switch Layer       =" << MISL::endl
+				<< "=      Embedded Command-Line Interface         =" << MISL::endl
+				<< "=                                              =" << MISL::endl
+				<< "================================================" << MISL::endl
+				<< "Version: "
+				<< MAJOR_VERSION << "."
+				<< MINOR_VERSION << "."
+				<< REVISION	<< MISL::endl;
 		
 	//Create our base system tasks
 	std::vector<ITask*> RTOSTasks = { new BlinkLEDTask()};
 
 	CLIInterpreterTask *CLI = new CLIInterpreterTask();
 	RTOSTasks.push_back(CLI);
+	
+	
 	
 	CLI->registerCommand(new SetPort());
 
@@ -107,16 +122,3 @@ void startTasks(std::vector<ITask*> taskList)
 		task->startTask();
 	}
 }
-
-
-	/*
-	int myInt, myInt2;
-	std::string myString;
-	MISL::ucin >> myInt >> myInt2 >> myString;
-	
-	
-	MISL::ucout << "Value 1: " << myInt << MISL::endl
-				<< "Value 2: " << myInt2 << MISL::endl
-				<< "Value 3: " << myString;
-	*/
-	

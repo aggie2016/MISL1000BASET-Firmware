@@ -128,6 +128,37 @@ VisualGDB/Debug/main.o: main.cpp \
  HardwareControl/../SystemObjects/SystemVariables.h \
  HardwareControl/../SystemObjects/ExceptionHandler.h \
  HardwareControl/../SystemObjects/HelperFunctions.h \
+ c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\algorithm \
+ c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\stl_algo.h \
+ c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\algorithmfwd.h \
+ c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\stl_heap.h \
+ c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\uniform_int_dist.h \
+ c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\limits \
+ c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\iterator \
+ c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\ostream \
+ c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\ios \
+ c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\ios_base.h \
+ c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\locale_classes.h \
+ c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\locale_classes.tcc \
+ c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\system_error \
+ c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\arm-eabi\thumb\cortex_m4\bits\error_constants.h \
+ c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\streambuf \
+ c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\streambuf.tcc \
+ c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\basic_ios.h \
+ c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\locale_facets.h \
+ c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\cwctype \
+ c:\sysgcc\arm-eabi\arm-eabi\sys-include\wctype.h \
+ c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\arm-eabi\thumb\cortex_m4\bits\ctype_base.h \
+ c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\streambuf_iterator.h \
+ c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\arm-eabi\thumb\cortex_m4\bits\ctype_inline.h \
+ c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\locale_facets.tcc \
+ c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\basic_ios.tcc \
+ c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\ostream.tcc \
+ c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\istream \
+ c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\istream.tcc \
+ c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\stream_iterator.h \
+ c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\sstream \
+ c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\sstream.tcc \
  HardwareControl/UIOStream.h \
  c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\stdlib.h \
  BSP/SDK/driverlib/pin_map.h \
@@ -144,13 +175,8 @@ VisualGDB/Debug/main.o: main.cpp \
  FreeRTOS/include/FreeRTOS.h FreeRTOS/include/task.h \
  FreeRTOS/include/list.h FreeRTOS/include/queue.h \
  FreeRTOS/Tasks/CLIInterpreterTask.h CommandLine/Commands/ICommand.h \
- c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\algorithm \
- c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\stl_algo.h \
- c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\algorithmfwd.h \
- c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\stl_heap.h \
- c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\uniform_int_dist.h \
- c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\limits \
- CommandLine/Commands/SetPort.h CommandLine/Commands/ICommand.h
+ SystemObjects/HelperFunctions.h CommandLine/Commands/SetPort.h \
+ CommandLine/Commands/ICommand.h
 
 c:\sysgcc\arm-eabi\lib\gcc\arm-eabi\6.2.0\include\stdbool.h:
 
@@ -418,6 +444,68 @@ HardwareControl/../SystemObjects/ExceptionHandler.h:
 
 HardwareControl/../SystemObjects/HelperFunctions.h:
 
+c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\algorithm:
+
+c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\stl_algo.h:
+
+c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\algorithmfwd.h:
+
+c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\stl_heap.h:
+
+c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\uniform_int_dist.h:
+
+c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\limits:
+
+c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\iterator:
+
+c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\ostream:
+
+c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\ios:
+
+c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\ios_base.h:
+
+c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\locale_classes.h:
+
+c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\locale_classes.tcc:
+
+c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\system_error:
+
+c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\arm-eabi\thumb\cortex_m4\bits\error_constants.h:
+
+c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\streambuf:
+
+c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\streambuf.tcc:
+
+c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\basic_ios.h:
+
+c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\locale_facets.h:
+
+c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\cwctype:
+
+c:\sysgcc\arm-eabi\arm-eabi\sys-include\wctype.h:
+
+c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\arm-eabi\thumb\cortex_m4\bits\ctype_base.h:
+
+c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\streambuf_iterator.h:
+
+c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\arm-eabi\thumb\cortex_m4\bits\ctype_inline.h:
+
+c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\locale_facets.tcc:
+
+c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\basic_ios.tcc:
+
+c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\ostream.tcc:
+
+c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\istream:
+
+c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\istream.tcc:
+
+c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\stream_iterator.h:
+
+c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\sstream:
+
+c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\sstream.tcc:
+
 HardwareControl/UIOStream.h:
 
 c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\stdlib.h:
@@ -472,17 +560,7 @@ FreeRTOS/Tasks/CLIInterpreterTask.h:
 
 CommandLine/Commands/ICommand.h:
 
-c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\algorithm:
-
-c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\stl_algo.h:
-
-c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\algorithmfwd.h:
-
-c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\stl_heap.h:
-
-c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\bits\uniform_int_dist.h:
-
-c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\limits:
+SystemObjects/HelperFunctions.h:
 
 CommandLine/Commands/SetPort.h:
 

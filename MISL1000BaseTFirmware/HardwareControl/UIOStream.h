@@ -40,6 +40,16 @@ namespace MISL
 		UARTEchoSet(state);
 	}
 	
+	/*! /fn void MISL::ClearConsole()
+	*	Writes the escape codes for clearing the console window to the UART TX
+	*	buffer.
+	*/
+	static void ClearConsole()
+	{
+		RTOSMutex UARTMutex(g_pUARTSemaphore, portMAX_DELAY);
+		UARTprintf("%s", "\033[2J\033[0;0H");
+	}
+	
 	typedef int ustreamsize;
 
 	

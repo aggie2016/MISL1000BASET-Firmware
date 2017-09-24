@@ -40,6 +40,10 @@ bool SetPort::functionToRun()
 	{
 		MISL::ucout << "\t[" << count++ << "] " << flag << MISL::endl;
 	}
+	if (!parsedCommandFlags().size())
+	{
+		MISL::ucout << "==== NO FLAGS PARSED ====";
+	}
 	
 	count = 0;
 	MISL::ucout << MISL::endl << "PARAMETERS:" << MISL::endl;

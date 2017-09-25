@@ -9,8 +9,8 @@
 <!-- VisualGDB provides BSP_ROOT and TOOLCHAIN_ROOT via environment when running Make. The line below will only be active if GNU Make is started manually. -->
 	<PropertyGroup>
 		<BSP_ROOT Condition="'$(BSP_ROOT)' == ''">BSP</BSP_ROOT>
-		<EFP_BASE Condition="'$(EFP_BASE)' == ''">../../../Users/Christopher Miller/AppData/Local/VisualGDB/EmbeddedEFPs</EFP_BASE>
-		<TESTFW_BASE Condition="'$(TESTFW_BASE)' == ''">../../../Users/Christopher Miller/AppData/Local/VisualGDB/TestFrameworks</TESTFW_BASE>
+		<EFP_BASE Condition="'$(EFP_BASE)' == ''">../../../../Users/Christopher Miller/AppData/Local/VisualGDB/EmbeddedEFPs</EFP_BASE>
+		<TESTFW_BASE Condition="'$(TESTFW_BASE)' == ''">../../../../Users/Christopher Miller/AppData/Local/VisualGDB/TestFrameworks</TESTFW_BASE>
 		<TOOLCHAIN_ROOT Condition="'$(TOOLCHAIN_ROOT)' == ''">c:/SysGCC/arm-eabi</TOOLCHAIN_ROOT>
 	</PropertyGroup>
 	<ItemDefinitionGroup>
@@ -21,13 +21,13 @@
 	</ItemDefinitionGroup>
 	<ItemDefinitionGroup>
 		<Link>
-			<LinkerScript Condition="'%(Link.LinkerScript)' == ''">C:/gdbsources/MISL1000BaseTFirmware/MISL1000BaseTFirmware/BSP/TM4C129/LinkerScripts/TM4C1294NCPDT_flash.lds</LinkerScript>
+			<LinkerScript Condition="'%(Link.LinkerScript)' == ''">C:/source/repos/MISL1000BASET-Firmware/MISL1000BaseTFirmware/BSP/TM4C129/LinkerScripts/TM4C1294NCPDT_flash.lds</LinkerScript>
 			<AdditionalLibraryNames>compactcpp;%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
 			<AdditionalOptions>--specs=nano.specs --specs=nosys.specs %(Link.AdditionalOptions)</AdditionalOptions>
 		</Link>
 	</ItemDefinitionGroup>
 	<PropertyGroup>
-		<DefaultLinkerScript>C:/gdbsources/MISL1000BaseTFirmware/MISL1000BaseTFirmware/BSP/TM4C129/LinkerScripts/TM4C1294NCPDT_flash.lds</DefaultLinkerScript>
+		<DefaultLinkerScript>C:/source/repos/MISL1000BASET-Firmware/MISL1000BaseTFirmware/BSP/TM4C129/LinkerScripts/TM4C1294NCPDT_flash.lds</DefaultLinkerScript>
 	</PropertyGroup>
 
 	<ItemDefinitionGroup>

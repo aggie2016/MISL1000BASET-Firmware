@@ -32,7 +32,7 @@
     <Toolchain>c:\SysGCC\arm-eabi</Toolchain>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|VisualGDB'">
-    <Toolchain>C:\SysGCC\arm-eabi</Toolchain>
+    <Toolchain>c:\SysGCC\arm-eabi</Toolchain>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
     <ClCompile>
@@ -61,7 +61,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\ti\TivaWare_C_Series-2.1.4.178\utils\uartstdio.c" />
+    <ClCompile Include="..\..\..\..\ti\TivaWare_C_Series-2.1.4.178\utils\uartstdio.c" />
     <ClCompile Include="BSP\SDK\driverlib\adc.c" />
     <ClCompile Include="BSP\SDK\driverlib\aes.c" />
     <ClCompile Include="BSP\SDK\driverlib\can.c" />

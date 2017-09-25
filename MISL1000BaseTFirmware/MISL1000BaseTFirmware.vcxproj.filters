@@ -76,6 +76,12 @@
     <ClCompile Include="HardwareControl\UIOStream.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
+    <ClCompile Include="SystemObjects\RTOSMutex.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="FreeRTOS\Tasks\CLIInterpreterTask.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
     <ClCompile Include="BSP\SystemInit\SystemInit.c">
       <Filter>Source files\Device-specific files</Filter>
     </ClCompile>
@@ -175,14 +181,8 @@
     <ClCompile Include="BSP\TM4C129\StartupFiles\startup_gcc.c">
       <Filter>Source files\Device-specific files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\ti\TivaWare_C_Series-2.1.4.178\utils\uartstdio.c">
+    <ClCompile Include="..\..\..\..\ti\TivaWare_C_Series-2.1.4.178\utils\uartstdio.c">
       <Filter>Source files\Device-specific files</Filter>
-    </ClCompile>
-    <ClCompile Include="SystemObjects\RTOSMutex.cpp">
-      <Filter>Source files</Filter>
-    </ClCompile>
-    <ClCompile Include="FreeRTOS\Tasks\CLIInterpreterTask.cpp">
-      <Filter>Source files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -1,5 +1,178 @@
 ﻿  uartstdio.c
+  adc.c
+  aes.c
+  can.c
+  comp.c
+  cpu.c
+  crc.c
+  des.c
+  eeprom.c
+  emac.c
+  epi.c
+  flash.c
+  fpu.c
+  gpio.c
+  hibernate.c
+  i2c.c
+  interrupt.c
+  lcd.c
+  mpu.c
+  pwm.c
+  qei.c
+  shamd5.c
+  ssi.c
+  sw_crc.c
+  sysctl.c
+  sysexc.c
+  systick.c
+  timer.c
+  uart.c
+  udma.c
+  usb.c
+  watchdog.c
+  SystemInit.c
+  startup_gcc.c
+  CLIInterpreterTask.cpp
+  ICommand.cpp
+  SetPort.cpp
+  croutine.c
+  event_groups.c
+  list.c
+  port.c
+  heap_2.c
+  queue.c
+  tasks.c
+  BlinkLEDTask.cpp
+  timers.c
+  GPIOPin.cpp
+  ITask.cpp
+  main.cpp
+  RTOSMutex.cpp
+  ExceptionHandler.cpp
+  HelperFunctions.cpp
+  UIOStream.cpp
+  HardwareControl\UIOStream.cpp(1):
+HardwareControl\UIOStream.h(47,14): warning :  'void MISL::ClearConsole()' defined but not used [-Wunused-function]
+    static void ClearConsole()
+                ^~~~~~~~~~~~
+HardwareControl\UIOStream.h(38,14): warning :  'void MISL::SetUARTEcho(bool)' defined but not used [-Wunused-function]
+    static void SetUARTEcho(bool state)
+                ^~~~~~~~~~~
+  CommandLine/Commands/ICommand.cpp: In member function 'bool ICommand::parseCommandParameters(std::__cxx11::string)':
+CommandLine\Commands\ICommand.cpp(90,23): warning :  comparison between signed and unsigned integer expressions [-Wsign-compare]
+    if (commandNameIndex != std::string::npos)
+        ~~~~~~~~~~~~~~~~~^~~~~~
+  CommandLine/Commands/SetPort.cpp: In member function 'virtual bool SetPort::functionToRun()':
+CommandLine\Commands\SetPort.cpp(35,17): warning :  ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+    MISL::ucout << "Running the read register command" << MISL::endl;
+                   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+CommandLine\Commands\SetPort.cpp(36,17): warning :  ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+    MISL::ucout << "Received the following arguments: " << MISL::endl;
+                   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+CommandLine\Commands\SetPort.cpp(37,17): warning :  ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+    MISL::ucout << "FLAGS:" << MISL::endl;
+                   ^~~~~~~~
+CommandLine\Commands\SetPort.cpp(41,18): warning :  ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+     MISL::ucout << "\t[" << count++ << "] " << flag << MISL::endl;
+                    ^~~~~
+CommandLine\Commands\SetPort.cpp(41,38): warning :  ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+     MISL::ucout << "\t[" << count++ << "] " << flag << MISL::endl;
+                                        ^~~~
+CommandLine\Commands\SetPort.cpp(45,18): warning :  ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+     MISL::ucout << "==== NO FLAGS PARSED ====";
+                    ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+CommandLine\Commands\SetPort.cpp(49,31): warning :  ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+    MISL::ucout << MISL::endl << "PARAMETERS:" << MISL::endl;
+                                 ^~~~~~~~~~~~~
+CommandLine\Commands\SetPort.cpp(53,18): warning :  ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+     MISL::ucout << "\t[" << count++ << "] " << parameter << MISL::endl;
+                    ^~~~~
+CommandLine\Commands\SetPort.cpp(53,38): warning :  ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+     MISL::ucout << "\t[" << count++ << "] " << parameter << MISL::endl;
+                                        ^~~~
+CommandLine\Commands\ICommand.cpp(104,18): warning :  comparison between signed and unsigned integer expressions [-Wsign-compare]
+     if (startIndex != std::string::npos)
+         ~~~~~~~~~~~^~~~~~
+  FreeRTOS/Tasks/CLIInterpreterTask.cpp: In member function 'virtual void CLIInterpreterTask::functionToRun()':
+FreeRTOS\Tasks\CLIInterpreterTask.cpp(20,18): warning :  ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+     MISL::ucout << "MISL>";
+                    ^~~~~~~
+FreeRTOS\Tasks\CLIInterpreterTask.cpp(42,34): warning :  ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+       MISL::ucout << MISL::endl << "Function success";
+                                    ^~~~~~~~~~~~~~~~~~
+FreeRTOS\Tasks\CLIInterpreterTask.cpp(45,34): warning :  ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+       MISL::ucout << MISL::endl << "Failed to parse command-line input to function: " << m_commands[0]->name();
+                                    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+FreeRTOS\Tasks\CLIInterpreterTask.cpp(48,34): warning :  ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+       MISL::ucout << MISL::endl << "Execution of command failed: " << m_commands[0]->name();
+                                    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+FreeRTOS\Tasks\CLIInterpreterTask.cpp(54,19): warning :  ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+      MISL::ucout << "Invalid command entered" << MISL::endl;
+                     ^~~~~~~~~~~~~~~~~~~~~~~~~
+CommandLine\Commands\ICommand.cpp(132,21): warning :  comparison between signed and unsigned integer expressions [-Wsign-compare]
+     for (int i = 0; i < flagRanges.size(); i++)
+                     ~~^~~~~~~~~~~~~~~~~~~
+CommandLine\Commands\ICommand.cpp(134,26): warning :  comparison between signed and unsigned integer expressions [-Wsign-compare]
+      if (flagRanges.size() > (i + 1))
+          ~~~~~~~~~~~~~~~~~~^~~~~~~~~
+CommandLine\Commands\ICommand.cpp(113,6): warning :  variable 'cursor' set but not used [-Wunused-but-set-variable]
+    int cursor = m_commandName.size();
+        ^~~~~~
+  CommandLine\Commands\SetPort.h(5):
+  CommandLine\Commands\SetPort.cpp(1):
+  ./HardwareControl/UIOStream.h: At global scope:
+.\HardwareControl\UIOStream.h(31,14): warning :  'void MISL::ConfigureUART()' declared 'static' but never defined [-Wunused-function]
+    static void ConfigureUART(void);
+                ^~~~~~~~~~~~~
+.\HardwareControl\UIOStream.h(47,14): warning :  'void MISL::ClearConsole()' defined but not used [-Wunused-function]
+    static void ClearConsole()
+                ^~~~~~~~~~~~
+.\HardwareControl\UIOStream.h(38,14): warning :  'void MISL::SetUARTEcho(bool)' defined but not used [-Wunused-function]
+    static void SetUARTEcho(bool state)
+                ^~~~~~~~~~~
+  FreeRTOS\Tasks\CLIInterpreterTask.h(14):
+  FreeRTOS\Tasks\CLIInterpreterTask.cpp(1):
+  ./HardwareControl/UIOStream.h: At global scope:
+.\HardwareControl\UIOStream.h(31,14): warning :  'void MISL::ConfigureUART()' declared 'static' but never defined [-Wunused-function]
+    static void ConfigureUART(void);
+                ^~~~~~~~~~~~~
+.\HardwareControl\UIOStream.h(47,14): warning :  'void MISL::ClearConsole()' defined but not used [-Wunused-function]
+    static void ClearConsole()
+                ^~~~~~~~~~~~
+.\HardwareControl\UIOStream.h(38,14): warning :  'void MISL::SetUARTEcho(bool)' defined but not used [-Wunused-function]
+    static void SetUARTEcho(bool state)
+                ^~~~~~~~~~~
+  main.cpp: In function 'int main()':
+main.cpp(84,17): warning :  ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+    MISL::ucout << "================================================" << MISL::endl
+                   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+main.cpp(85,8): warning :  ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+       << "=     MISL Gigabit Ethernet Switch Layer       =" << MISL::endl
+          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+main.cpp(86,8): warning :  ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+       << "=      Embedded Command-Line Interface         =" << MISL::endl
+          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+main.cpp(87,8): warning :  ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+       << "=                                              =" << MISL::endl
+          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+main.cpp(88,8): warning :  ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+       << "================================================" << MISL::endl
+          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+main.cpp(89,8): warning :  ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+       << "Version: "
+          ^~~~~~~~~~~
+main.cpp(90,25): warning :  ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+       << MAJOR_VERSION << "."
+                           ^~~
+main.cpp(91,25): warning :  ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+       << MINOR_VERSION << "."
+                           ^~~
+  main.cpp(10):
+  ./HardwareControl/UIOStream.h: At global scope:
+.\HardwareControl\UIOStream.h(31,14): warning :  'void MISL::ConfigureUART()' declared 'static' but never defined [-Wunused-function]
+    static void ConfigureUART(void);
+                ^~~~~~~~~~~~~
   Linking ../VisualGDB/Debug/MISL1000BaseTFirmware...
   ------------------- Memory utilization report -------------------
-  Used FLASH: 210KB out of 1024KB (20%) [-24]
+  Used FLASH: 210KB out of 1024KB (20%)
   Used RAM: 55KB out of 256KB (21%)

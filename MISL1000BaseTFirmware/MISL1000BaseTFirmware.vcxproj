@@ -110,6 +110,7 @@
     <ClCompile Include="HardwareControl\GPIOPin.cpp" />
     <ClCompile Include="HardwareControl\ITask.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="HardwareControl\MISLHAL.cpp" />
     <ClCompile Include="SystemObjects\RTOSMutex.cpp" />
     <ClCompile Include="SystemObjects\ExceptionHandler.cpp" />
     <ClCompile Include="SystemObjects\HelperFunctions.cpp" />
@@ -212,6 +213,7 @@
     <ClInclude Include="HardwareControl\GPIOPin.h" />
     <ClInclude Include="HardwareControl\ITask.h" />
     <ClInclude Include="main.h" />
+    <ClInclude Include="HardwareControl\MISLHAL.h" />
     <ClInclude Include="SystemObjects\RTOSMutex.h" />
     <ClInclude Include="SystemObjects\ExceptionHandler.h" />
     <ClInclude Include="SystemObjects\HelperFunctions.h" />

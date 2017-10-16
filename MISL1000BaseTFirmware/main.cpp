@@ -92,13 +92,16 @@ int main(void)
 				<< REVISION	<< MISL::endl;
 		
 	//Create our base system tasks
-	std::vector<ITask*> RTOSTasks = { new BlinkLEDTask()};
+	std::vector<ITask*> RTOSTasks;
 
 	CLIInterpreterTask *CLI = new CLIInterpreterTask();
+	BlinkLEDTask *BlinkTask = new BlinkLEDTask();
+	
 	RTOSTasks.push_back(CLI);
+	RTOSTasks.push_back(BlinkTask);
 	
 	
-	
+	//Add any new CLI commands to the system here before initialization
 	CLI->registerCommand(new SetPort());
 
 	

@@ -184,6 +184,9 @@
     <ClCompile Include="..\..\..\..\ti\TivaWare_C_Series-2.1.4.178\utils\uartstdio.c">
       <Filter>Source files\Device-specific files</Filter>
     </ClCompile>
+    <ClCompile Include="HardwareControl\MISLHAL.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="MISL1000BaseTFirmware-Debug.vgdbsettings">
@@ -483,6 +486,9 @@
       <Filter>Header files</Filter>
     </ClInclude>
     <ClInclude Include="FreeRTOS\Tasks\CLIInterpreterTask.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="HardwareControl\MISLHAL.h">
       <Filter>Header files</Filter>
     </ClInclude>
   </ItemGroup>

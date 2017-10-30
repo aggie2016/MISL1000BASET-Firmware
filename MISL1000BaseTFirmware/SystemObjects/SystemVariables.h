@@ -3,6 +3,12 @@
 
 #include <stdbool.h>
 #include <stdint.h>
+#include <inc/hw_memmap.h>
+#include <inc/hw_sysctl.h>
+#include <driverlib/rom.h>
+#include <driverlib/sysctl.h>
+
+
 
 enum class SystemPeripheral : uint32_t
 {
@@ -84,5 +90,44 @@ enum class SystemPeripheral : uint32_t
 	PERIPH_WTIMER4 = 0xf0005c04,
 	PERIPH_WTIMER5 = 0xf0005c05
 };
+   	
+
+
+
+//*****************************************************************************
+//
+//! Pauses execution of the microcontroller for the time specified in ui32Ms in
+//! milliseconds by converting ui32Ms to MCU ticks. This function blocks all
+//! other running tasks for the time specified. [USE SPARINGLY].
+//!
+//! \param ui32Ms the number of milliseconds to pause the MCU
+//
+//*****************************************************************************
+static void delayMs(uint32_t ui32Ms) 
+{
+
+    	// 1 clock cycle = 1 / SysCtlClockGet() second
+    	// 1 SysCtlDelay = 3 clock cycle = 3 / SysCtlClockGet() second
+    	// 1 second = SysCtlClockGet() / 3
+    	// 0.001 second = 1 ms = SysCtlClockGet() / 3 / 1000
+
+    ROM_SysCtlDelay(ui32Ms * (SysCtlClockGet() / 3 / 1000));
+}
+    
+//*****************************************************************************
+//
+//! Pauses execution of the microcontroller for the time specified in ui32Us in
+//! microseconds by converting ui32Us to MCU ticks. This function blocks all
+//! other running tasks for the time specified. [USE SPARINGLY].
+//!
+//! \param ui32Us the number of microseconds to pause the MCU
+//
+//*****************************************************************************
+static void delayUs(uint32_t ui32Us) 
+{
+    ROM_SysCtlDelay(ui32Us * (SysCtlClockGet() / 3 / 1000000));
+}
+
+
 
 #endif //SystemVariables.h

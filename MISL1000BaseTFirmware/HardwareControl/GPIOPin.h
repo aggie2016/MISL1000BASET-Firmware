@@ -166,6 +166,9 @@ public:
 
 	void write(GPIOState state);
 	GPIOState read(GPIOPorts port, GPIOPins pins);
+    
+    GPIOPorts port() const;
+    GPIOPins pin() const; 
 
 protected:
 	virtual bool initializeGPIO(void);

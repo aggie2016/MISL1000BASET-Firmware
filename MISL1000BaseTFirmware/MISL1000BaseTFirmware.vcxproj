@@ -39,7 +39,7 @@
       <AdditionalIncludeDirectories>.;FreeRTOS/include;FreeRTOS/portable/CCS/ARM_CM4F;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>-mthumb -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=softfp -g -Wall %(AdditionalOptions)</AdditionalOptions>
       <CPPLanguageStandard>CPP11</CPPLanguageStandard>
-      <PreprocessorDefinitions>DEBUG=1;UART_BUFFERED;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>DEBUG=1;UART_BUFFERED;DEBUG_DEFAULT_INTERRUPT_HANDLERS;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <ToolchainSettingsContainer>
       <InstructionSet>THUMB</InstructionSet>
@@ -95,6 +95,7 @@
     <ClCompile Include="BSP\SDK\driverlib\watchdog.c" />
     <ClCompile Include="BSP\SystemInit\SystemInit.c" />
     <ClCompile Include="BSP\TM4C129\StartupFiles\startup_gcc.c" />
+    <ClCompile Include="HardwareControl\EthernetControllerRegisters.cpp" />
     <ClCompile Include="FreeRTOS\Tasks\CLIInterpreterTask.cpp" />
     <ClCompile Include="CommandLine\Commands\ICommand.cpp" />
     <ClCompile Include="CommandLine\Commands\SetPort.cpp" />
@@ -108,9 +109,10 @@
     <ClCompile Include="FreeRTOS\Tasks\BlinkLEDTask.cpp" />
     <ClCompile Include="FreeRTOS\timers.c" />
     <ClCompile Include="HardwareControl\GPIOPin.cpp" />
+    <ClCompile Include="HardwareControl\HardwareRegister.cpp" />
     <ClCompile Include="HardwareControl\ITask.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="HardwareControl\MISLHAL.cpp" />
+    <ClCompile Include="HardwareControl\SPI.cpp" />
     <ClCompile Include="SystemObjects\RTOSMutex.cpp" />
     <ClCompile Include="SystemObjects\ExceptionHandler.cpp" />
     <ClCompile Include="SystemObjects\HelperFunctions.cpp" />
@@ -191,6 +193,7 @@
     <ClInclude Include="BSP\SDK\inc\hw_udma.h" />
     <ClInclude Include="BSP\SDK\inc\hw_usb.h" />
     <ClInclude Include="BSP\SDK\inc\hw_watchdog.h" />
+    <ClInclude Include="HardwareControl\EthernetControllerRegisters.h" />
     <ClInclude Include="FreeRTOS\Tasks\CLIInterpreterTask.h" />
     <ClInclude Include="CommandLine\Commands\ICommand.h" />
     <ClInclude Include="CommandLine\Commands\SetPort.h" />
@@ -210,10 +213,11 @@
     <ClInclude Include="FreeRTOS\include\timers.h" />
     <ClInclude Include="FreeRTOS\portable\CCS\ARM_CM4F\portmacro.h" />
     <ClInclude Include="FreeRTOS\Tasks\BlinkLEDTask.h" />
+    <ClInclude Include="HardwareControl\HardwareRegister.h" />
     <ClInclude Include="HardwareControl\GPIOPin.h" />
     <ClInclude Include="HardwareControl\ITask.h" />
     <ClInclude Include="main.h" />
-    <ClInclude Include="HardwareControl\MISLHAL.h" />
+    <ClInclude Include="HardwareControl\SPI.h" />
     <ClInclude Include="SystemObjects\RTOSMutex.h" />
     <ClInclude Include="SystemObjects\ExceptionHandler.h" />
     <ClInclude Include="SystemObjects\HelperFunctions.h" />

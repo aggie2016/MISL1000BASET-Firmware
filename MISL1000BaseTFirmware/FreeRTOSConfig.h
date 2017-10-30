@@ -82,9 +82,11 @@
  * See http://www.freertos.org/a00110.html.
  *----------------------------------------------------------*/
 
-#include "main.h"
+#include <stdint.h>
 
-#define configCPU_CLOCK_HZ              SYSTEM_CLOCK
+extern uint32_t g_ui32SysClock;
+
+#define configCPU_CLOCK_HZ              g_ui32SysClock
 #define configUSE_TICKLESS_IDLE         0
 #define configTICK_RATE_HZ              ( ( TickType_t ) 1000 )
 

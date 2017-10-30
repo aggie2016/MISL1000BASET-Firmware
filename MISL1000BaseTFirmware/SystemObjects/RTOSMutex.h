@@ -14,10 +14,19 @@
 class RTOSMutex
 {
 public:
+    RTOSMutex();
 	RTOSMutex(xSemaphoreHandle &handle, TickType_t blockTimeMs);
     ~RTOSMutex();
+    
+    xSemaphoreHandle getHandle() const;
+    TickType_t getBlockTime() const;
+    
+    RTOSMutex& operator=(const RTOSMutex &rhs);
+    
 private:
 	xSemaphoreHandle m_handle;
+    TickType_t m_blockTime;
+    bool m_mutexAttached;
 };
 
 #endif //RTOSMutex.h

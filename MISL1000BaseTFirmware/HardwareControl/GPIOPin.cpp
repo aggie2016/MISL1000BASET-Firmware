@@ -95,6 +95,18 @@ GPIOState GPIOPin::read(GPIOPorts gpioPort, GPIOPins gpioPins)
 	return GPIOState::LOW;
 }
 
+
+GPIOPorts GPIOPin::port() const
+{
+    return m_port;
+}
+
+
+GPIOPins GPIOPin::pin() const
+{
+    return m_pin;
+}
+
 	
 void GPIOPin::setIntState(bool enabled)
 {

@@ -1,59 +1,4 @@
-#include <stdbool.h>
-#include <stdint.h>
-#include <memory>
-#include <vector>
-#include <inc/hw_memmap.h>
-#include <driverlib/debug.h>
-#include <driverlib/rom.h>
-#include <driverlib/sysctl.h>
-#include <HardwareControl/GPIOPin.h>
-#include <HardwareControl/UIOStream.h>
-#include "SystemObjects/RTOSMutex.h"
 #include "main.h"
-
-
-/* Headers for all user-defined FreeRTOS tasks.
-*  Use these as a template if you wish to implement
-*  more functions that will share the microcontroller
-*  computational cycles. To easily create new tasks, 
-*  inherit from ITask and call its default constructors.
-*/
-#include "FreeRTOS/Tasks/BlinkLEDTask.h"
-#include "FreeRTOS/Tasks/CLIInterpreterTask.h"
-
-
-/* Headers for all user-defined MISL Switch CLI Commands.
-*  Use these as a template if you wish to implement
-*  more functions that will be added to the command line.
-*  To create a new CLI Command, create a new class that inherits
-*  from ICommand and then build the parameters for the base class
-*  by using the following template:
-*
-*   //Create a list of optional command-line flags that can be used to 
-*   //change the behavior of the implemented function. The first parameter
-*	//is the escaped flag. The second is a short textual help message.
-* 	KeyValueList flags;
-*	flags.push_back(std::make_tuple("\\h", "return as hex"));
-*	flags.push_back(std::make_tuple("\\i", "return as integer"));
-*
-*   //Create a list of command-line parameters that can be used to 
-*   //force the behavior of the implemented function. The first parameter
-*	//is the parameter name. The second is a short textual help message.
-*	KeyValueList parameters;
-*	parameters.push_back(std::make_tuple("start address", "the address to start reading from"));
-*	parameters.push_back(std::make_tuple("end address", "the address to stop reading when reached"));
-*
-*	//Set the name of the CLI command
-*	setName("Read Register");
-*	//Create a short description for the help menu
-*	setDescription("reads a register from the system");
-*	//Attach the flags and parameters to the command
-*	setCommandFlags(flags);
-*	setCommandParameters(parameters);
-*/
-#include "CommandLine/Commands/SetPort.h"
-
-uint32_t g_ui32SysClock = SYSTEM_CLOCK;
 
 //*****************************************************************************
 //
@@ -64,9 +9,6 @@ uint32_t g_ui32SysClock = SYSTEM_CLOCK;
 //*****************************************************************************
 xSemaphoreHandle g_pUARTSemaphore;
 
-
-void startTasks(std::vector<ITask*> taskList);
-
 int main(void)
 {
 	// Initialize system clock to 120 MHz
@@ -74,7 +16,7 @@ int main(void)
 	
 	// Create system mutexes
 	g_pUARTSemaphore = xSemaphoreCreateMutex();
-	
+	/*
 	//Turn character echoing when characters are received from the command-line
 	MISL::SetUARTEcho(true);
 	
@@ -91,6 +33,14 @@ int main(void)
 				<< MINOR_VERSION << "."
 				<< REVISION	<< MISL::endl;
 		
+    
+    //Initialize all system hardware
+    if (!setupHardware())
+    {
+        MISL::ucout << "[ERROR]: Failed to initialize hardware resources..." << MISL::endl
+                    << "\tAttempting to resolve, system will reset." << MISL::endl;
+    }
+    */
 	//Create our base system tasks
 	std::vector<ITask*> RTOSTasks;
 
@@ -100,11 +50,91 @@ int main(void)
 	RTOSTasks.push_back(CLI);
 	RTOSTasks.push_back(BlinkTask);
 	
-	
+    GPIOPin SPIRx(ETHOCON_SSI_RX_GPIO_PORT_BASE, ETHOCON_SSI_RX, PinDirection::HW);
+    GPIOPin SPITx(ETHOCON_SSI_TX_GPIO_PORT_BASE, ETHOCON_SSI_TX, PinDirection::HW);
+    GPIOPin SPIClk(ETHOCON_SSI_CLK_GPIO_PORT_BASE, ETHOCON_SSI_CLK, PinDirection::HW);
+    GPIOPin SPIFss(ETHOCON_SSI_FSS_GPIO_PORT_BASE, ETHOCON_SSI_FSS, PinDirection::OUTPUT);
+    
+    GPIOPin WSPIRx(WIZNET_SSI_RX_GPIO_PORT_BASE, WIZNET_SSI_RX, PinDirection::HW);
+    GPIOPin WSPITx(WIZNET_SSI_TX_GPIO_PORT_BASE, WIZNET_SSI_TX, PinDirection::HW);
+    GPIOPin WSPIClk(WIZNET_SSI_CLK_GPIO_PORT_BASE, WIZNET_SSI_CLK, PinDirection::HW);
+    GPIOPin WSPIFss(WIZNET_SSI_FSS_GPIO_PORT_BASE, WIZNET_SSI_FSS, PinDirection::OUTPUT);
+    
+    
+    MISL::SPI ethernetController(MISL::SPIDevice::SPI1, SPIRx, SPITx, SPIClk, SPIFss, g_ui32SysClock, 1000000);
+    
+    MISL::SPI wiznetWebServer(MISL::SPIDevice::SPI2, WSPIRx, WSPITx, WSPIClk, WSPIFss, g_ui32SysClock, 1000000);
+
+    
+    //Procedure to connect W5500 over 100Mbps:   
+    //Turn off auto-negotiation
+    ethernetController.assertAction(MISL::FSSAssertAction::High);
+    ethernetController.assertAction(MISL::FSSAssertAction::Low);
+    ethernetController.write(0x40);
+    ethernetController.write(0x0A);
+    ethernetController.write(0x20);
+    ethernetController.write(0x00);
+    ethernetController.write(0x01);    
+    //Manually set port speed to 100Mbps
+    ethernetController.assertAction(MISL::FSSAssertAction::High);
+    ethernetController.assertAction(MISL::FSSAssertAction::Low);
+    ethernetController.write(0x40);
+    ethernetController.write(0x0A);
+    ethernetController.write(0x20);
+    ethernetController.write(0x00);
+    ethernetController.write(0x21);
+    ethernetController.assertAction(MISL::FSSAssertAction::High);
+    ethernetController.assertAction(MISL::FSSAssertAction::Low);
+    ethernetController.write(0x40);
+    ethernetController.write(0x0A);
+    ethernetController.write(0x20);
+    ethernetController.write(0x20);
+    ethernetController.write(0x00);
+    //Turn off auto MDI/MDI-X
+    ethernetController.assertAction(MISL::FSSAssertAction::High);
+    ethernetController.assertAction(MISL::FSSAssertAction::Low);
+    ethernetController.write(0x40);
+    ethernetController.write(0x0A);
+    ethernetController.write(0x27);
+    ethernetController.write(0x20);
+    ethernetController.write(0x40);    
+    //Turn on MDI-X mode
+    ethernetController.assertAction(MISL::FSSAssertAction::High);
+    ethernetController.assertAction(MISL::FSSAssertAction::Low);
+    ethernetController.write(0x40);
+    ethernetController.write(0x0A);
+    ethernetController.write(0x27);
+    ethernetController.write(0x20);
+    ethernetController.write(0x40);
+    ethernetController.assertAction(MISL::FSSAssertAction::High);
+    
+    //Check port status
+    ethernetController.assertAction(MISL::FSSAssertAction::High);
+    ethernetController.assertAction(MISL::FSSAssertAction::Low);
+    ethernetController.write(0x60);
+    ethernetController.write(0x0A);
+    ethernetController.write(0x20);
+    ethernetController.write(0x60);
+    uint32_t chipID = ethernetController.read();
+    ethernetController.assertAction(MISL::FSSAssertAction::High);
+
+    
+    wiznetWebServer.assertAction(MISL::FSSAssertAction::High);
+    wiznetWebServer.assertAction(MISL::FSSAssertAction::Low);
+    wiznetWebServer.write(0x00);
+    wiznetWebServer.write(0x2E);
+    wiznetWebServer.write(0x00);
+    uint32_t wiznetChipID = wiznetWebServer.read();
+    wiznetWebServer.assertAction(MISL::FSSAssertAction::High);
+    
 	//Add any new CLI commands to the system here before initialization
 	CLI->registerCommand(new SetPort());
 
-	
+    //Address is 0x5103
+        
+    //0000 1010 0010 0000 0110 0000  
+    //0000 1010 0010 0111 0010 0000
+    
 	/*Start our FreeRTOS tasks
 	* Normally calling startTask() would result in the specified ITask instance starting
 	* immediately, however since we haven't started the FreeRTOS scheduler, the tasks 
@@ -116,6 +146,13 @@ int main(void)
 	vTaskStartScheduler();
 	return 0;
 	
+}
+
+bool setupHardware()
+{
+        	
+    //Everything is configured properly
+    return true;
 }
 
 void startTasks(std::vector<ITask*> taskList)

@@ -12,7 +12,8 @@ typedef std::tuple<std::string, std::string> KeyValuePair;
 enum class ICommandResult {
 	Success,
 	ParseFailed,
-	CommandFailed
+	CommandFailed,
+    HelpDialogRequested
 };
 
 
@@ -36,26 +37,23 @@ public:
 	KeyValueList commandFlags();
 	void setCommandParameters(KeyValueList parameters);
 	KeyValueList commandParameters();
-	
-	std::vector<std::string> parsedCommandFlags();
-	std::vector<std::string> parsedCommandParameters();
 
 	ICommandResult run(std::string cli_input);
 
 protected:
 	//Pure virtual functions for execution and success/failure of a command
-	virtual bool functionToRun() = 0;
+    virtual bool functionToRun(const KeyValueList &flags, const KeyValueList &parameters) = 0;
 	virtual void operationSuccess() = 0;
 	virtual void operationFailed() = 0;
+    virtual void helpRequested() = 0;
 
 private:
 	std::string m_commandName;
 	std::string m_description;
 	KeyValueList m_flags;
 	KeyValueList m_parameters;
-	std::vector<std::string> m_parsedFlags;
-	std::vector<std::string> m_parsedParameters;
-	bool parseCommandParameters(std::string cli_input);
+    KeyValueList parseCommandParameters(std::string cli_input);
+    KeyValueList parseCommandFlags(std::string cli_input);
 	static bool sortFlagIndexes(const std::tuple<int, int> &a, const std::tuple<int, int> &b);
 };
 

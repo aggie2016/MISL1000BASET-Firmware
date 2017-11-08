@@ -45,25 +45,25 @@ KeyValueList ICommand::commandParameters()
 	return m_parameters;
 }
 
-std::vector<std::string> ICommand::parsedCommandFlags()
-{
-	return m_parsedFlags;
-}
-
-std::vector<std::string> ICommand::parsedCommandParameters()
-{
-	return m_parsedParameters;
-}
-
 ICommandResult ICommand::run(std::string cli_input)
 {
-	if (!parseCommandParameters(cli_input))
+    //Quickly check to see if help dialog was requested.
+    if (cli_input.find("--help") != std::string::npos)
+    {
+        helpRequested();
+        return ICommandResult::HelpDialogRequested;
+    }
+    
+    KeyValueList parameters = parseCommandParameters(cli_input);
+	if (parameters.size() != m_parameters.size())
 	{
 		return ICommandResult::ParseFailed;
 	}
+    
+    KeyValueList flags = parseCommandFlags(cli_input);
 
 	//Call the implementation of this command's action created by deriving from this class
-	if (!functionToRun())
+    if (!functionToRun(parameters, flags))
 	{
 		operationFailed();
 		return ICommandResult::CommandFailed;
@@ -73,105 +73,84 @@ ICommandResult ICommand::run(std::string cli_input)
 	return ICommandResult::Success;
 }
 
-bool ICommand::parseCommandParameters(std::string cli_input)
+KeyValueList ICommand::parseCommandParameters(std::string cli_input)
 {
-	//Command will be <command-name> <flags (\[A-Z | a-z]){1,}> <parameters>
- 
-	std::vector<std::tuple<int, int>> flagRanges;
-	
-	//Clear all past values
-	m_parsedFlags.clear();
-	m_parsedParameters.clear();
-	
-	
-	//Trim off the name of the command
-	int commandNameIndex = cli_input.find(name());
-	
-	if (commandNameIndex != std::string::npos)
-	{
-		cli_input.erase(commandNameIndex, name().length());
-	}
-	
-	
-	//Check for all flags (if any)
-	for (KeyValuePair flag : m_flags)
-	{
-		int startIndex = 0;
-		//Grab the flag name from our std::tuple 
-		std::string flagName = std::get<0>(flag);
-		startIndex = cli_input.find(flagName, 0);
-		
-		if (startIndex != std::string::npos)
-		{
-			m_parsedFlags.push_back(flagName);
-			flagRanges.push_back(std::make_tuple(startIndex, startIndex + flagName.size()));	
-		}
-	}
-	
+	//Command will be <command-name> <parameters> <flags (\[A-Z | a-z]){1,}> 
+    KeyValueList parsedParameters;
+        
+    //Ingest the command name
+    std::size_t cursorIndex = cli_input.find(m_commandName);
+    if (cursorIndex != std::string::npos)
+    {
+        //Place the cursor at the index of the first character AFTER the command string
+        cursorIndex += m_commandName.size();        
+    }
+    
+    // Find all parameters up to the first flag
+    std::size_t endOfParametersIndex = cli_input.find('-', cursorIndex);
+    
+    //Create a substring that contains all characters up to the first flag ('-')
+    std::string parameterString = cli_input.substr(cursorIndex, ((endOfParametersIndex - cursorIndex) - 1));
+    
+    //Create tokenized parameters
+    auto tokens = HelperFunctions::splitString(parameterString);
+    
+    //Match parameters with their friendly names
+    for (int i = 0; i < tokens.size() && i < m_parameters.size(); i++)
+    {
+        std::string parameterName = std::get<0>(m_parameters[i]);
+        std::string tokenValue = tokens[i];
+        parsedParameters.push_back(std::make_tuple(parameterName, tokenValue));
+    }
 
-	std::sort(flagRanges.begin(), flagRanges.end(), sortFlagIndexes);		
-	int cursor = m_commandName.size();
-				
-	//Get all characters up to the first flag if possible
-	if (flagRanges.size() > 0)
-	{
-		std::string parameterString = (cli_input.substr(0, std::get<0>(flagRanges[0])));
-		//Remove spaces (if any) to get just the parameter
-		//parameter.erase(std::remove_if(parameter.begin(), parameter.end(), isspace), parameter.end());
-		
-		if (parameterString.size() > 0)
-		{
-			for (std::string parameter : HelperFunctions::splitString(parameterString))
-			{
-				m_parsedParameters.push_back(parameter);					
-			}
-		}
-		cursor = std::get<1>(flagRanges[0]);
-		
-		//Seach for parameters inside the range of the flags 
-		for (int i = 0; i < flagRanges.size(); i++)
-		{
-			if (flagRanges.size() > (i + 1))
-			{
-				//Flag found somewhere in the middle of the command string
-				std::string parameter = (cli_input.substr(std::get<1>(flagRanges[i]), std::get<0>(flagRanges[i + 1]) - std::get<1>(flagRanges[i])));
-				//Remove spaces (if any) to get just the parameter
-				parameter.erase(std::remove_if(parameter.begin(), parameter.end(), isspace), parameter.end());
-				if (parameter.size() > 0)
-				{
-					m_parsedParameters.push_back(parameter);
-				}
-			}
-			else
-			{
-				//Flag found at the end of the cli string
-				std::string parameter = (cli_input.substr(std::get<1>(flagRanges[i]), cli_input.size() - std::get<1>(flagRanges[i])));
-				//Remove spaces (if any) to get just the parameter
-				parameter.erase(std::remove_if(parameter.begin(), parameter.end(), isspace), parameter.end());
-				if (parameter.size() > 0)
-				{
-					m_parsedParameters.push_back(parameter);
-				}
-			}
-		}
-	}
-	else
-	{
-		//No flags found. Try spliting this string by spaces to get parameters
-		for (std::string parameter : HelperFunctions::splitString(cli_input))
-		{
-			m_parsedParameters.push_back(parameter);					
-		}
-	}
-	
-	if (m_parsedParameters.size() != m_parameters.size())
-	{
-		//We failed to find some of the required parameters
-		return false;
-	}
-	
 	//Every parameter is accounted for.
-	return true;
+    return parsedParameters;
+}
+
+KeyValueList ICommand::parseCommandFlags(std::string cli_input)
+{
+	//Command will be <command-name> <parameters> <flags (\[A-Z | a-z]){1,}> 
+    KeyValueList parsedFlags;
+    
+    //Ingest the command name
+    std::size_t cursorIndex = cli_input.find(m_commandName);
+    if (cursorIndex != std::string::npos)
+    {
+        //Place the cursor at the index of the first character AFTER the command string
+        cursorIndex += m_commandName.size();        
+    }
+    
+    for (KeyValuePair flag : m_flags)
+    {
+        std::size_t flagStartIndex = cli_input.find(std::get<0>(flag), cursorIndex);
+        
+        if (flagStartIndex == std::string::npos)
+        {
+            //Flag not found
+            continue;
+        }
+        
+        //Ingest the flag (we don't need it)
+        flagStartIndex += std::get<0>(flag).size();
+        
+        //Find the value associated with this flag
+        flagStartIndex = cli_input.find_first_not_of(' ', flagStartIndex);
+        
+        if (flagStartIndex == std::string::npos)
+        {
+            //Flag value not found
+            continue;
+        }
+        
+        //Find the end of this flag value
+        size_t endIndex = cli_input.find_first_of(' ', flagStartIndex);
+        
+        std::string flagValue = cli_input.substr(flagStartIndex, ((endIndex - flagStartIndex) + 1));
+        parsedFlags.push_back(std::make_tuple(std::get<0>(flag), flagValue));
+    }
+    
+	//Every parameter is accounted for.
+    return parsedFlags;
 }
 
 bool ICommand::sortFlagIndexes(const std::tuple<int, int> &a, const std::tuple<int, int> &b)

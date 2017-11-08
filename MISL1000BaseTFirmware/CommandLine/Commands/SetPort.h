@@ -12,10 +12,10 @@ public:
 	
 protected:
 	//Inherited from ICommand
-	bool functionToRun();
+    bool functionToRun(const KeyValueList &flags, const KeyValueList &parameters);
 	void operationSuccess();
 	void operationFailed();
-
+    void helpRequested();
 };
 
 #endif

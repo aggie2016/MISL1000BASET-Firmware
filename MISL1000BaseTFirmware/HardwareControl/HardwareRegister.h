@@ -6,38 +6,55 @@
 #include <functional>
 #include <string>
 #include <vector>
+#include "HardwareControl/IReadWriteDevice.h"
 
-enum class PermissionType
+
+namespace MISL
 {
-    ReadOnly,
-    WriteOnly,
-    ReadWrite
-};
+    enum class PermissionType
+    {
+        ReadOnly,
+        WriteOnly,
+        ReadWrite
+    };
 
-enum class SpecialProperties
-{
-    None,
-    SelfClearing
-};
+    enum class SpecialProperties
+    {
+        None,
+        SelfClearing
+    };
 
 
-class HardwareRegister;
-class RegisterValue;
+    class HardwareRegister;
+    class RegisterValue;
 
-static uint32_t getStandardValue(RegisterValue* val);
+    static uint32_t getStandardValue(RegisterValue* val);
 
-class RegisterValue
-{
+    class RegisterValue
+    {
     public:
-        RegisterValue(uint8_t startBit, uint8_t endBit, std::string description, 
-            PermissionType type, HardwareRegister *parent, SpecialProperties specialProperty = SpecialProperties::None);
+        RegisterValue(uint8_t startBit,
+            uint8_t endBit,
+            std::string description, 
+            PermissionType type,
+            HardwareRegister *parent,
+            SpecialProperties specialProperty = SpecialProperties::None);
     
-        RegisterValue(uint8_t startBit, uint8_t endBit, std::string description, 
-                      PermissionType type, HardwareRegister *parent, std::function<uint32_t(RegisterValue*)> updateFunction, SpecialProperties specialProperty = SpecialProperties::None);
+        RegisterValue(uint8_t startBit,
+            uint8_t endBit,
+            std::string description, 
+            PermissionType type,
+            HardwareRegister *parent,
+            std::function<uint32_t(RegisterValue*)> updateFunction,
+            SpecialProperties specialProperty = SpecialProperties::None);
     
         uint32_t value();
+        uint32_t value(uint32_t offset);
+    
         HardwareRegister* parent();
         void setParent(HardwareRegister *reg);
+    
+        //Properties of a hardware register value used to calculate its value. Passed to the updateDelegate().
         uint8_t startBit();
         uint8_t endBit();
         std::string description();
@@ -51,43 +68,33 @@ class RegisterValue
         HardwareRegister *m_parent;
         std::function<uint32_t(RegisterValue*)> m_updateDelegate;
         SpecialProperties m_properties;
-};
+    };
 
-class HardwareRegister
-{
+    class HardwareRegister
+    {
     public:
-        HardwareRegister(uint32_t baseAddr, uint16_t size, std::string name);
+        HardwareRegister(IReadWriteDevice* device, uint32_t baseAddr, uint16_t size, std::string name);
     
-        uint32_t baseAddress();
         uint32_t value();
-        uint16_t sizeInBytes();
+        uint32_t value(uint32_t offset);
         std::string name();   
-        void update();
- 
+        static void AddChildRegister(HardwareRegister *reg, RegisterValue *value);
+    
         friend class RegisterValue;
-    
-        static void AddChildRegister(HardwareRegister *reg, RegisterValue *value)
-        {
-            value->setParent(reg);
-            reg->m_values.push_back(value);
-        }
-    
-    
+       
     private:
         std::string m_name;
         uint32_t m_baseAddress;
-        uint16_t m_size;
-        uint32_t m_lastValue;     
+        uint16_t m_size;   
         std::vector<RegisterValue*> m_values;
-        static void updateValue(HardwareRegister* reg);
-        static void updateAllValues(HardwareRegister* reg);
-          
-};
+        IReadWriteDevice* m_device;
+    
+        static uint32_t updateValue(HardwareRegister* reg);   
+    };
 
-static uint32_t getStandardValue(RegisterValue* val)
-{
-    return (val->parent()->value() & ((((1 << (val->endBit() + 1)) - 1) >> val->startBit()) << val->startBit())) >> val->startBit();
 }
+
+
 
 
 //Global Registers [0x0000 - 0x00FF]

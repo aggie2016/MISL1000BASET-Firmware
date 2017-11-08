@@ -118,6 +118,18 @@ namespace MISL
         return temp & 0xFF;
     }
     
+    bool SPI::open()
+    {
+        assertAction(MISL::FSSAssertAction::High);
+        assertAction(MISL::FSSAssertAction::Low);
+    }
+    
+    
+    bool SPI::close()
+    {
+        assertAction(MISL::FSSAssertAction::High);
+    }
+    
     
     std::map<SPIDevice, SPIBaseDevice> SPI::buildMap()
     {

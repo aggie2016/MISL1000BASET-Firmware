@@ -20,9 +20,10 @@
 #include "driverlib/rom_map.h"
 #include "driverlib/ssi.h"
 #include "driverlib/sysctl.h"
-#include <HardwareControl/GPIOPin.h>
-#include <SystemObjects/SystemVariables.h>
-#include <SystemObjects/RTOSMutex.h>
+#include "HardwareControl/GPIOPin.h"
+#include "SystemObjects/SystemVariables.h"
+#include "SystemObjects/RTOSMutex.h"
+#include "HardwareControl/IReadWriteDevice.h"
 
 
 namespace MISL
@@ -60,7 +61,7 @@ namespace MISL
         Low
     };
     
-class SPI
+    class SPI : public IReadWriteDevice
     {
     public:
         SPI(SPIDevice peripheral, GPIOPin rxPin, GPIOPin txPin, GPIOPin clkPin, GPIOPin fssPin, uint32_t systemClock, uint32_t bitRate);
@@ -74,8 +75,11 @@ class SPI
         
         void assertAction(FSSAssertAction action);
                
-        void write(const uint8_t &data);
-        uint8_t read();
+        void write(const uint8_t &data) override;
+        uint8_t read() override;
+        
+        bool open() override;
+        bool close() override;
         
     private:
         static std::map<SPIDevice, SPIBaseDevice> buildMap();

@@ -11,8 +11,8 @@
 #include <algorithm>
 #include <string>
 #include <vector>
+#include "ITask.h"
 #include "HardwareControl/UIOStream.h"
-#include "HardwareControl/ITask.h"
 #include "CommandLine/Commands/ICommand.h"
 #include "SystemObjects/HelperFunctions.h"
 

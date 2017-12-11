@@ -98,7 +98,7 @@
         </KeyValue>
         <KeyValue>
           <Key>com.sysprogs.arm.openocd.initargs</Key>
-          <Value>-c "adapter_khz 3000"</Value>
+          <Value>-c "adapter_khz 100000"</Value>
         </KeyValue>
         <KeyValue>
           <Key>com.sysprogs.arm.openocd.commands.halt</Key>

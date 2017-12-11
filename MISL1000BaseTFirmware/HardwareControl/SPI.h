@@ -61,7 +61,7 @@ namespace MISL
         Low
     };
     
-    class SPI : public IReadWriteDevice
+    class SPI : public IReadWriteDevice<uint8_t>
     {
     public:
         SPI(SPIDevice peripheral, GPIOPin rxPin, GPIOPin txPin, GPIOPin clkPin, GPIOPin fssPin, uint32_t systemClock, uint32_t bitRate);
@@ -75,7 +75,7 @@ namespace MISL
         
         void assertAction(FSSAssertAction action);
                
-        void write(const uint8_t &data) override;
+        bool write(const uint8_t &data) override;
         uint8_t read() override;
         
         bool open() override;

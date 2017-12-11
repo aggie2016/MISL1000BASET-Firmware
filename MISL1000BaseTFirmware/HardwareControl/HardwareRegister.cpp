@@ -102,7 +102,7 @@ namespace MISL
 
 
 
-    HardwareRegister::HardwareRegister(IReadWriteDevice* device, uint32_t baseAddr, uint16_t size, std::string name)
+    HardwareRegister::HardwareRegister(IReadWriteDevice<uint8_t>* device, uint32_t baseAddr, uint16_t size, std::string name)
         : m_name(name)
         , m_baseAddress(baseAddr)
         , m_size(size)

@@ -67,9 +67,6 @@
     <ClCompile Include="main.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
-    <ClCompile Include="HardwareControl\ITask.cpp">
-      <Filter>Source files</Filter>
-    </ClCompile>
     <ClCompile Include="FreeRTOS\Tasks\BlinkLEDTask.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
@@ -184,7 +181,19 @@
     <ClCompile Include="..\..\..\..\ti\TivaWare_C_Series-2.1.4.178\utils\uartstdio.c">
       <Filter>Source files\Device-specific files</Filter>
     </ClCompile>
-    <ClCompile Include="HardwareControl\MISLHAL.cpp">
+    <ClCompile Include="HardwareControl\SPI.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="HardwareControl\HardwareRegister.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="FreeRTOS\Tasks\ITask.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="HardwareControl\W5500.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="TCPIPObjects\Socket.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -473,9 +482,6 @@
     <ClInclude Include="BSP\SDK\driverlib\watchdog.h">
       <Filter>Header files\Device-specific files</Filter>
     </ClInclude>
-    <ClInclude Include="HardwareControl\ITask.h">
-      <Filter>Header files</Filter>
-    </ClInclude>
     <ClInclude Include="FreeRTOS\Tasks\BlinkLEDTask.h">
       <Filter>Header files</Filter>
     </ClInclude>
@@ -488,7 +494,25 @@
     <ClInclude Include="FreeRTOS\Tasks\CLIInterpreterTask.h">
       <Filter>Header files</Filter>
     </ClInclude>
-    <ClInclude Include="HardwareControl\MISLHAL.h">
+    <ClInclude Include="HardwareControl\SPI.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="HardwareControl\HardwareRegister.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="HardwareControl\EthernetControllerRegisters.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="HardwareControl\IReadWriteDevice.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="FreeRTOS\Tasks\ITask.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="HardwareControl\W5500.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="TCPIPObjects\Socket.h">
       <Filter>Header files</Filter>
     </ClInclude>
   </ItemGroup>

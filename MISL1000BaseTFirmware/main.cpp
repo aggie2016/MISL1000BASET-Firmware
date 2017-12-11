@@ -9,6 +9,22 @@
 //*****************************************************************************
 xSemaphoreHandle g_pUARTSemaphore;
 
+
+GPIOPin SPIRx(ETHOCON_SSI_RX_GPIO_PORT_BASE, ETHOCON_SSI_RX, PinDirection::HW);
+GPIOPin SPITx(ETHOCON_SSI_TX_GPIO_PORT_BASE, ETHOCON_SSI_TX, PinDirection::HW);
+GPIOPin SPIClk(ETHOCON_SSI_CLK_GPIO_PORT_BASE, ETHOCON_SSI_CLK, PinDirection::HW);
+GPIOPin SPIFss(ETHOCON_SSI_FSS_GPIO_PORT_BASE, ETHOCON_SSI_FSS, PinDirection::OUTPUT);
+    
+GPIOPin WSPIRx(WIZNET_SSI_RX_GPIO_PORT_BASE, WIZNET_SSI_RX, PinDirection::HW);
+GPIOPin WSPITx(WIZNET_SSI_TX_GPIO_PORT_BASE, WIZNET_SSI_TX, PinDirection::HW);
+GPIOPin WSPIClk(WIZNET_SSI_CLK_GPIO_PORT_BASE, WIZNET_SSI_CLK, PinDirection::HW);
+GPIOPin WSPIFss(WIZNET_SSI_FSS_GPIO_PORT_BASE, WIZNET_SSI_FSS, PinDirection::OUTPUT);
+    
+    
+MISL::SPI ethernetController(MISL::SPIDevice::SPI1, SPIRx, SPITx, SPIClk, SPIFss, g_ui32SysClock, 1000000);   
+MISL::SPI wiznetIC(MISL::SPIDevice::SPI2, WSPIRx, WSPITx, WSPIClk, WSPIFss, g_ui32SysClock, 1000000);
+MISL::W5500 wiznetWebServer(&wiznetIC);
+
 int main(void)
 {
 	// Initialize system clock to 120 MHz
@@ -33,14 +49,14 @@ int main(void)
 				<< MINOR_VERSION << "."
 				<< REVISION	<< MISL::endl;
 		
-    
+    */
     //Initialize all system hardware
     if (!setupHardware())
     {
         MISL::ucout << "[ERROR]: Failed to initialize hardware resources..." << MISL::endl
                     << "\tAttempting to resolve, system will reset." << MISL::endl;
     }
-    */
+    
 	//Create our base system tasks
 	std::vector<ITask*> RTOSTasks;
 
@@ -49,91 +65,25 @@ int main(void)
 	
 	RTOSTasks.push_back(CLI);
 	RTOSTasks.push_back(BlinkTask);
-	
-    GPIOPin SPIRx(ETHOCON_SSI_RX_GPIO_PORT_BASE, ETHOCON_SSI_RX, PinDirection::HW);
-    GPIOPin SPITx(ETHOCON_SSI_TX_GPIO_PORT_BASE, ETHOCON_SSI_TX, PinDirection::HW);
-    GPIOPin SPIClk(ETHOCON_SSI_CLK_GPIO_PORT_BASE, ETHOCON_SSI_CLK, PinDirection::HW);
-    GPIOPin SPIFss(ETHOCON_SSI_FSS_GPIO_PORT_BASE, ETHOCON_SSI_FSS, PinDirection::OUTPUT);
     
-    GPIOPin WSPIRx(WIZNET_SSI_RX_GPIO_PORT_BASE, WIZNET_SSI_RX, PinDirection::HW);
-    GPIOPin WSPITx(WIZNET_SSI_TX_GPIO_PORT_BASE, WIZNET_SSI_TX, PinDirection::HW);
-    GPIOPin WSPIClk(WIZNET_SSI_CLK_GPIO_PORT_BASE, WIZNET_SSI_CLK, PinDirection::HW);
-    GPIOPin WSPIFss(WIZNET_SSI_FSS_GPIO_PORT_BASE, WIZNET_SSI_FSS, PinDirection::OUTPUT);
-    
-    
-    MISL::SPI ethernetController(MISL::SPIDevice::SPI1, SPIRx, SPITx, SPIClk, SPIFss, g_ui32SysClock, 1000000);
-    
-    MISL::SPI wiznetWebServer(MISL::SPIDevice::SPI2, WSPIRx, WSPITx, WSPIClk, WSPIFss, g_ui32SysClock, 1000000);
-
-    
-    //Procedure to connect W5500 over 100Mbps:   
-    //Turn off auto-negotiation
-    ethernetController.assertAction(MISL::FSSAssertAction::High);
-    ethernetController.assertAction(MISL::FSSAssertAction::Low);
-    ethernetController.write(0x40);
-    ethernetController.write(0x0A);
-    ethernetController.write(0x20);
-    ethernetController.write(0x00);
-    ethernetController.write(0x01);    
-    //Manually set port speed to 100Mbps
-    ethernetController.assertAction(MISL::FSSAssertAction::High);
-    ethernetController.assertAction(MISL::FSSAssertAction::Low);
-    ethernetController.write(0x40);
-    ethernetController.write(0x0A);
-    ethernetController.write(0x20);
-    ethernetController.write(0x00);
-    ethernetController.write(0x21);
-    ethernetController.assertAction(MISL::FSSAssertAction::High);
-    ethernetController.assertAction(MISL::FSSAssertAction::Low);
-    ethernetController.write(0x40);
-    ethernetController.write(0x0A);
-    ethernetController.write(0x20);
-    ethernetController.write(0x20);
-    ethernetController.write(0x00);
-    //Turn off auto MDI/MDI-X
-    ethernetController.assertAction(MISL::FSSAssertAction::High);
-    ethernetController.assertAction(MISL::FSSAssertAction::Low);
-    ethernetController.write(0x40);
-    ethernetController.write(0x0A);
-    ethernetController.write(0x27);
-    ethernetController.write(0x20);
-    ethernetController.write(0x40);    
-    //Turn on MDI-X mode
-    ethernetController.assertAction(MISL::FSSAssertAction::High);
-    ethernetController.assertAction(MISL::FSSAssertAction::Low);
-    ethernetController.write(0x40);
-    ethernetController.write(0x0A);
-    ethernetController.write(0x27);
-    ethernetController.write(0x20);
-    ethernetController.write(0x40);
-    ethernetController.assertAction(MISL::FSSAssertAction::High);
+    NetworkInformation netinfo;
+    netinfo.ip = { 192, 168, 2, 193 };
+    netinfo.gw = { 192, 168, 2, 1 };
+    netinfo.sn = { 255, 255, 255, 0 };
     
     //Check port status
-    ethernetController.assertAction(MISL::FSSAssertAction::High);
-    ethernetController.assertAction(MISL::FSSAssertAction::Low);
-    ethernetController.write(0x60);
-    ethernetController.write(0x0A);
-    ethernetController.write(0x20);
-    ethernetController.write(0x60);
-    uint32_t chipID = ethernetController.read();
-    ethernetController.assertAction(MISL::FSSAssertAction::High);
-
+    uint32_t port5Status = PHYBasicStatusRegister.value(PORT_5_REGISTER_OFFSET);
+    uint32_t SwitchStatus = StartSwitch.value();
     
-    wiznetWebServer.assertAction(MISL::FSSAssertAction::High);
-    wiznetWebServer.assertAction(MISL::FSSAssertAction::Low);
-    wiznetWebServer.write(0x00);
-    wiznetWebServer.write(0x2E);
-    wiznetWebServer.write(0x00);
-    uint32_t wiznetChipID = wiznetWebServer.read();
-    wiznetWebServer.assertAction(MISL::FSSAssertAction::High);
+    wiznetWebServer.setNetworkInfo(netinfo);
+    
+    uint8_t status = wiznetWebServer.linkStatus();
+    MISL::Socket(1, MISL::SocketType::TCP, 80, 0, &wiznetWebServer);
+    
     
 	//Add any new CLI commands to the system here before initialization
-	CLI->registerCommand(new SetPort());
-
-    //Address is 0x5103
-        
-    //0000 1010 0010 0000 0110 0000  
-    //0000 1010 0010 0111 0010 0000
+	CLI->registerCommand(new SetPort());    
+    
     
 	/*Start our FreeRTOS tasks
 	* Normally calling startTask() would result in the specified ITask instance starting
@@ -144,13 +94,57 @@ int main(void)
 	
 	
 	vTaskStartScheduler();
+        
 	return 0;
 	
 }
 
 bool setupHardware()
 {
-        	
+    //Procedure to connect W5500 over 100Mbps:   
+    //Turn off auto-negotiation
+    ethernetController.open();
+    ethernetController.write(0x40);
+    ethernetController.write(0x0A);
+    ethernetController.write(0x20);
+    ethernetController.write(0x00);
+    ethernetController.write(0x01);    
+    ethernetController.close();
+    
+    //Manually set port speed to 100Mbps
+    ethernetController.open();
+    ethernetController.write(0x40);
+    ethernetController.write(0x0A);
+    ethernetController.write(0x20);
+    ethernetController.write(0x00);
+    ethernetController.write(0x21);
+    ethernetController.close();
+    
+    ethernetController.open();
+    ethernetController.write(0x40);
+    ethernetController.write(0x0A);
+    ethernetController.write(0x20);
+    ethernetController.write(0x20);
+    ethernetController.write(0x00);
+    ethernetController.close();
+    
+    //Turn off auto MDI/MDI-X
+    ethernetController.open();
+    ethernetController.write(0x40);
+    ethernetController.write(0x0A);
+    ethernetController.write(0x27);
+    ethernetController.write(0x20);
+    ethernetController.write(0x40);    
+    ethernetController.close();
+    //Turn on MDI-X mode
+    ethernetController.open();
+    ethernetController.write(0x40);
+    ethernetController.write(0x0A);
+    ethernetController.write(0x27);
+    ethernetController.write(0x20);
+    ethernetController.write(0x40);
+    ethernetController.close();
+        
     //Everything is configured properly
     return true;
 }

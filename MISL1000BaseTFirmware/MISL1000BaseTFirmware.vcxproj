@@ -95,7 +95,6 @@
     <ClCompile Include="BSP\SDK\driverlib\watchdog.c" />
     <ClCompile Include="BSP\SystemInit\SystemInit.c" />
     <ClCompile Include="BSP\TM4C129\StartupFiles\startup_gcc.c" />
-    <ClCompile Include="HardwareControl\EthernetControllerRegisters.cpp" />
     <ClCompile Include="FreeRTOS\Tasks\CLIInterpreterTask.cpp" />
     <ClCompile Include="CommandLine\Commands\ICommand.cpp" />
     <ClCompile Include="CommandLine\Commands\SetPort.cpp" />
@@ -110,9 +109,11 @@
     <ClCompile Include="FreeRTOS\timers.c" />
     <ClCompile Include="HardwareControl\GPIOPin.cpp" />
     <ClCompile Include="HardwareControl\HardwareRegister.cpp" />
-    <ClCompile Include="HardwareControl\ITask.cpp" />
+    <ClCompile Include="FreeRTOS\Tasks\ITask.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="HardwareControl\SPI.cpp" />
+    <ClCompile Include="HardwareControl\W5500.cpp" />
+    <ClCompile Include="TCPIPObjects\Socket.cpp" />
     <ClCompile Include="SystemObjects\RTOSMutex.cpp" />
     <ClCompile Include="SystemObjects\ExceptionHandler.cpp" />
     <ClCompile Include="SystemObjects\HelperFunctions.cpp" />
@@ -215,9 +216,12 @@
     <ClInclude Include="FreeRTOS\Tasks\BlinkLEDTask.h" />
     <ClInclude Include="HardwareControl\HardwareRegister.h" />
     <ClInclude Include="HardwareControl\GPIOPin.h" />
-    <ClInclude Include="HardwareControl\ITask.h" />
+    <ClInclude Include="FreeRTOS\Tasks\ITask.h" />
+    <ClInclude Include="HardwareControl\IReadWriteDevice.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="HardwareControl\SPI.h" />
+    <ClInclude Include="HardwareControl\W5500.h" />
+    <ClInclude Include="TCPIPObjects\Socket.h" />
     <ClInclude Include="SystemObjects\RTOSMutex.h" />
     <ClInclude Include="SystemObjects\ExceptionHandler.h" />
     <ClInclude Include="SystemObjects\HelperFunctions.h" />

@@ -1,23 +1,40 @@
-#ifndef IREAD_WRITE_DEVICE_H
-#define IREAD_WRITE_DEVICE_H
-
-#include <cstdint>
+#ifndef IREADWRITE_H
+#define IREADWRITE_H
 
 namespace MISL
 {
+    
+    template <typename ReadWriteType>
     class IReadWriteDevice
     {
-    public:
-        IReadWriteDevice();
-        virtual ~IReadWriteDevice();
+        public:
+            IReadWriteDevice()
+            {
             
-        virtual uint8_t read() = 0; 
-        virtual void write(const uint8_t &data);
+            }
         
-        virtual bool open() = 0;
-        virtual bool close() = 0;
+        
+            virtual ~IReadWriteDevice()
+            {
+            
+            }
+    
+            virtual ReadWriteType read() = 0;
+            virtual bool write(const ReadWriteType &value)
+            {
+                //Function must be implemented in derived class for writing values
+                return false;
+            }
+    
+            virtual bool open() = 0;
+            virtual bool close() = 0;
     };
+    
 }
 
 
-#endif
+
+
+#endif // IREADWRITE_H
+
+

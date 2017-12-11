@@ -80,7 +80,7 @@ namespace MISL
         }
     }
             
-    void SPI::write(const uint8_t &data)
+    bool SPI::write(const uint8_t &data)
     {       
         if (m_mutexAttached)
         {
@@ -127,6 +127,7 @@ namespace MISL
     
     bool SPI::close()
     {
+        assertAction(MISL::FSSAssertAction::Low);
         assertAction(MISL::FSSAssertAction::High);
     }
     

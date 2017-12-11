@@ -10,8 +10,9 @@
 
 
 #include <driverlib/rom.h>
+#include "ITask.h"
 #include "HardwareControl/GPIOPin.h"
-#include "HardwareControl/ITask.h"
+
 
 class BlinkLEDTask : public ITask
 {

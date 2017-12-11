@@ -113,4 +113,14 @@ static MISL::RegisterValue PHYLinkStatus(2, 2, "Port Link Status", MISL::Permiss
 static MISL::RegisterValue PHYJabberDetect(1, 1, "Port Jabber Detected", MISL::PermissionType::ReadOnly, &PHYBasicStatusRegister);
 static MISL::RegisterValue PHYExtendedCapability(0, 0, "Port Extended Capability", MISL::PermissionType::ReadOnly, &PHYBasicStatusRegister);
 
+static MISL::HardwareRegister PortDefaultTagRegister(&ethernetController, 0x0100, 2, "Port PHY Default VLAN Tag Register");
+static MISL::RegisterValue PriorityCodePoint(15, 13, "Priority Code Point", MISL::PermissionType::ReadWrite, &PortDefaultTagRegister);
+static MISL::RegisterValue DropEligibleIndicator(12, 12, "Drop Eligible Indicator (DEI)", MISL::PermissionType::ReadWrite, &PortDefaultTagRegister);
+static MISL::RegisterValue VLANIdentifier(11, 0, "VLAN Indicator (VID)", MISL::PermissionType::ReadWrite, &PortDefaultTagRegister);
+
+static MISL::HardwareRegister PortPME_WOLEventRegister(&ethernetController, 0x0013, 1, "Port PME or WOL Event Register");
+static MISL::RegisterValue MagicPacketDetect(2, 2, "Magic Packet Detected", MISL::PermissionType::ReadWrite, &PortPME_WOLEventRegister);
+static MISL::RegisterValue LinkUpDetect(1, 1, "Link Up Detected", MISL::PermissionType::ReadWrite, &PortPME_WOLEventRegister);
+static MISL::RegisterValue EnergyDetect(0, 0, "Energy Detected", MISL::PermissionType::ReadWrite, &PortPME_WOLEventRegister);
+
 #endif

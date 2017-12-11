@@ -73,7 +73,7 @@ namespace MISL
     class HardwareRegister
     {
     public:
-        HardwareRegister(IReadWriteDevice* device, uint32_t baseAddr, uint16_t size, std::string name);
+        HardwareRegister(IReadWriteDevice<uint8_t>* device, uint32_t baseAddr, uint16_t size, std::string name);
     
         uint32_t value();
         uint32_t value(uint32_t offset);
@@ -87,7 +87,7 @@ namespace MISL
         uint32_t m_baseAddress;
         uint16_t m_size;   
         std::vector<RegisterValue*> m_values;
-        IReadWriteDevice* m_device;
+        IReadWriteDevice<uint8_t>* m_device;
     
         static uint32_t updateValue(HardwareRegister* reg);   
     };

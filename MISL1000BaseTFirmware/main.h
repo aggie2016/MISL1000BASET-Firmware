@@ -62,6 +62,10 @@
 */
 #include "CommandLine/Commands/SetPort.h"
 
+#include "HardwareControl/EthernetControllerRegisters.h"
+
+#include "TCPIPObjects/Socket.h"
+
 // System clock rate, 120 MHz
 #define SYSTEM_CLOCK    120000000U
 uint32_t g_ui32SysClock = SYSTEM_CLOCK;

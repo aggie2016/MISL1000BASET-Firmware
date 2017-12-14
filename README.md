@@ -31,8 +31,15 @@ Additionally, the following dependencies are required to build this project for 
 http://software-dl.ti.com/tiva-c/SW-TM4C/latest/index_FDS.html
 - LM4Flash Tool
 ```cpp
-   [chris@linux-mainframe]$ git clone https://github.com/utzig/lm4tools.git
+[chris@linux-mainframe tools]$ git clone https://github.com/utzig/lm4tools.git
+[chris@linux-mainframe tools]$ cd lm4tools/lm4flash/
+[chris@linux-mainframe lm4flash]$ make
+/* gcc -Wall -g -O2 -I/usr/include/libusb-1.0    lm4flash.c -L/lib64 -lusb-1.0   -o lm4flash */
+[chris@linux-mainframe lm4flash]$ sudo cp lm4flash /usr/bin/   
+   
 ```
+**IMPORTANT:** Once you have extracted the GCC-ARM-Embedded package to your computer, be sure to update your $PATH in ~/.basrc to point to the bin folder of that extracted toolchain.
+
 - OpenOCD Debugger (w/ ICDI support)
 ```cpp
 [chris@linux-mainframe ARM]$ git clone git://git.code.sf.net/p/openocd/code openocd.git
